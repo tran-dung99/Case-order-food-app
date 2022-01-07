@@ -37,9 +37,29 @@ class FoodSeeder extends Seeder
         $food->save();
 
         $food = new Food();
+        $food->name = "Phở Bò Tái";
+        $food->address = "Cầu Giấy, Hà nội";
+        $food->category = "Phở";
+        $food->restaurant_id = Restaurant::all()->random()->id;
+        $food->note = "abc";
+        $food->price = "30000";
+        $food->seen_time = "0";
+        $food->save();
+
+        $food = new Food();
         $food->name = "Sữa đậu nành";
         $food->address = "Ba Đình, Hà nội";
         $food->category = "Đồ uống";
+        $food->restaurant_id = Restaurant::all()->random()->id;
+        $food->note = "abc";
+        $food->price = "30000";
+        $food->seen_time = "0";
+        $food->save();
+
+        $food = new Food();
+        $food->name = "Cơm Sườn";
+        $food->address = "Nam Từ Liên, Hà nội";
+        $food->category = "Cơm";
         $food->restaurant_id = Restaurant::all()->random()->id;
         $food->note = "abc";
         $food->price = "30000";

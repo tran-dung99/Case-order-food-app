@@ -16,25 +16,31 @@ class FoodController extends Controller
     public function index()
     {
         $foods = Food::all();
-        return view("food.food",compact("foods"));
+        return view("frontend.layout.home",compact("foods"));
     }
 
-    public function getByCom()
+    public function getByRice()
     {
-        $foods = Food::where('category','LIKE','Cơm')->get();
-        return view("food.com",compact("foods"));
+        $foodRices = Food::where('category','LIKE','Cơm')->get();
+        return response()->json(["data"=>$foodRices]);
      }
 
-    public function getByPho()
+    public function getByNoodle()
     {
-        $foods = Food::where('category','LIKE','Phở')->get();
-        return view("food.pho",compact("foods"));
+        $foodNoodles = Food::where('category','LIKE','Phở')->get();
+        return response()->json(["data"=>$foodNoodles]);
     }
 
-    public function getByDouong()
+    public function getAll()
     {
-        $foods = Food::where('category','LIKE','Đồ uống')->get();
-        return view("food.douong",compact("foods"));
+        $foods = Food::all();
+        return response()->json(["data"=>$foods]);
+    }
+
+    public function getByDrink()
+    {
+        $foodDrinks = Food::where('category','LIKE','Đồ uống')->get();
+        return response()->json(["data"=>$foodDrinks]);
     }
     /**
      * Show the form for creating a new resource.
