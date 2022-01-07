@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -14,9 +15,27 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        $foods = Food::all();
+        return view("food.food",compact("foods"));
     }
 
+    public function getByCom()
+    {
+        $foods = Food::where('category','LIKE','Cơm')->get();
+        return view("food.com",compact("foods"));
+     }
+
+    public function getByPho()
+    {
+        $foods = Food::where('category','LIKE','Phở')->get();
+        return view("food.pho",compact("foods"));
+    }
+
+    public function getByDouong()
+    {
+        $foods = Food::where('category','LIKE','Đồ uống')->get();
+        return view("food.douong",compact("foods"));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,10 +63,12 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show($id)
     {
-        //
+        $food = Food::findOrfail($id);
+       return view("food.detail",compact("food"));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -81,5 +102,11 @@ class FoodController extends Controller
     public function destroy(Food $food)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $result = Food::with("restaurant")->where('name','LIKE','%'.$request->result.'%')->get();
+        return response()->json(["data"=>$result]);
     }
 }

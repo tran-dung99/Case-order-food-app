@@ -20,6 +20,7 @@ class CreateFoodsTable extends Migration
             $table->string('image')->nullable();
             $table->string('category');
             $table->string('note');
+            $table->unsignedBigInteger('restaurant_id');
             $table->unsignedBigInteger('price');
             $table->integer('seen_time');
             $table->timestamps();

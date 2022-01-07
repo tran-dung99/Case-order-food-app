@@ -9,4 +9,9 @@ class Restaurant extends Model
 {
     use HasFactory;
     protected $table = "restaurants";
+
+    public function foods()
+    {
+        return $this->hasMany(Food::class);
+    }
 }
