@@ -22,25 +22,30 @@
                         <div class="col-xl-12">
                             <div class="auth-form">
                                 <h4 class="text-center mb-4">Sign up your account</h4>
-                                <form action="index.html">
+                                <form action="" method="post">
+                                    @csrf
                                     <div class="form-group">
                                         <label><strong>Username</strong></label>
-                                        <input type="text" class="form-control" placeholder="username">
+                                        <input type="name" class="form-control" name="name" placeholder="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><strong>Phone</strong></label>
+                                        <input type="phone" class="form-control" name="phone" placeholder="+84">
                                     </div>
                                     <div class="form-group">
                                         <label><strong>Email</strong></label>
-                                        <input type="email" class="form-control" placeholder="hello@example.com">
+                                        <input type="email" class="form-control" name="email" placeholder="hello@example.com">
                                     </div>
                                     <div class="form-group">
                                         <label><strong>Password</strong></label>
-                                        <input type="password" class="form-control" value="Password">
+                                        <input type="password" class="form-control" name="password" value="Password">
                                     </div>
                                     <div class="text-center mt-4">
                                         <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
                                     </div>
                                 </form>
                                 <div class="new-account mt-3">
-                                    <p>Already have an account? <a class="text-primary" href="page-login.html">Sign in</a></p>
+                                    <p>Already have an account? <a class="text-primary" href="{{route('admin.showFormLogin')}}">Sign in</a></p>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +24,20 @@ Route::get('/home',[AuthController::class,"index"])->name("home");
 
 Route::get('/showFormLogin',[AuthController::class,"showFormLogin"])->name("home.showFormLogin");
 Route::post('/login',[AuthController::class,"login"])->name("home.login");
-
 Route::get('/logout',[AuthController::class,"logout"])->name("home.logout");
-
 Route::get('/register',[AuthController::class,"showFormRegister"])->name("home.showFormRegister");
 Route::post('/register',[AuthController::class,"register"])->name("home.register");
+
+
+
+Route::get('/master',[AdminController::class,"index"])->name("master");
+
+Route::get('/showFormLoginAdmin',[AdminController::class,"showFormLoginAdmin"])->name("admin.showFormLogin");
+Route::post('/loginAdmin',[AdminController::class,"loginAdmin"])->name("admin.login");
+Route::get('/logoutAdmin',[AdminController::class,"logoutAdmin"])->name("admin.logout");
+Route::get('/registerAdmin',[AdminController::class,"showFormRegisterAdmin"])->name("admin.showFormRegister");
+Route::post('/registerAdmin',[AdminController::class,"registerAdmin"])->name("admin.register");
+
+Route::prefix('users')->group(function (){
+    Route::get('/',[UserController::class,"index"])->name("users.list");
+});

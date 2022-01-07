@@ -27,7 +27,8 @@ class AuthController extends Controller
             return view('frontend.layout.home');
 
         } else {
-            dd("Login Fail");
+            session()->flash('error-login', 'Tài khoản không đúng!');
+            return view('frontend.auth.login');
         }
     }
 

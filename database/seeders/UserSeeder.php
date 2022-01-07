@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,7 @@ class UserSeeder extends Seeder
         $user->email = "admin@gmail.com";
         $user->password = Hash::make('123123');
         $user->phone = '0977546351';
+        $user->role_id = '1';
         $user->save();
 
         $user = new User();
@@ -27,6 +29,7 @@ class UserSeeder extends Seeder
         $user->email = "hoa@gmail.com";
         $user->password = Hash::make('123123');
         $user->phone = '0954821657';
+        $user->role_id = '2';
         $user->save();
 
         $user = new User();
@@ -34,6 +37,7 @@ class UserSeeder extends Seeder
         $user->email = "nga@gmail.com";
         $user->password = Hash::make('123123');
         $user->phone = '0962458124';
+        $user->role_id = '2';
         $user->save();
 
         $user = new User();
@@ -41,6 +45,7 @@ class UserSeeder extends Seeder
         $user->email = "hoang@gmail.com";
         $user->password = Hash::make('123123');
         $user->phone = '0856248751';
+        $user->role_id = Role::all()->random()->id;
         $user->save();
     }
 }

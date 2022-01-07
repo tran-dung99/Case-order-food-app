@@ -143,6 +143,11 @@
     @csrf
     <h3>Sig in Here</h3>
 
+    @if(session()->has('error-login'))
+        <div class="alert alert-danger">
+            {{session()->get('error-login')}}
+        </div>
+    @endif
     <label for="email">Email</label>
     <input type="text" name="email" placeholder="Email or Phone" id="email">
 

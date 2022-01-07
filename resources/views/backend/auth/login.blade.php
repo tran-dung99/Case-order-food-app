@@ -22,14 +22,20 @@
                         <div class="col-xl-12">
                             <div class="auth-form">
                                 <h4 class="text-center mb-4">Sign in your account</h4>
-                                <form action="index.html">
+                                <form action="{{route('admin.login')}}" method="post">
+                                    @csrf
+                                    @if(session()->has('error-login'))
+                                        <div class="alert alert-danger">
+                                            {{session()->get('error-login')}}
+                                        </div>
+                                    @endif
                                     <div class="form-group">
                                         <label><strong>Email</strong></label>
-                                        <input type="email" class="form-control" value="hello@example.com">
+                                        <input type="email" name="email" class="form-control" value="admin@gmail.com">
                                     </div>
                                     <div class="form-group">
                                         <label><strong>Password</strong></label>
-                                        <input type="password" class="form-control" value="Password">
+                                        <input type="password" name="password" class="form-control" value="Password">
                                     </div>
                                     <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                         <div class="form-group">
@@ -47,7 +53,7 @@
                                     </div>
                                 </form>
                                 <div class="new-account mt-3">
-                                    <p>Don't have an account? <a class="text-primary" href="./page-register.html">Sign up</a></p>
+                                    <p>Don't have an account? <a class="text-primary" href="{{route('admin.showFormRegister')}}">Sign up</a></p>
                                 </div>
                             </div>
                         </div>
