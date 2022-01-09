@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 
-@section('foodList')
+@section('content')
 <form method="post" enctype="multipart/form-data" action="{{route('foods.create')}}" style="color: black">
     @csrf
     <div class="container">
@@ -25,6 +25,15 @@
             <select class="form-control" id="category" name="category">
                 @foreach(\App\Models\Category::all() as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Người dùng</label>
+            <select class="form-control" id="category" name="user">
+                @foreach(\App\Models\User::all() as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
                 @endforeach
             </select>
         </div>

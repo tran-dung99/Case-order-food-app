@@ -19,8 +19,9 @@ class FoodController extends Controller
     public function destroy($id)
     {
         $food = Food::findOrFail($id);
+//        $food->users()->detach();
         $food->delete();
-        return response()->json();
+        return response()->json(["status"=>"success"]);
     }
 
     public function show($id)
@@ -37,11 +38,8 @@ class FoodController extends Controller
 
     public function store(Request $request)
     {
-
-
         $food = new Food();
         $food->name = $request->name;
-        $food->address = $request->address;
         $food->restaurant_id = $request->restaurant;
         $food->category_id = $request->category;
         $food->note = $request->note;
@@ -66,7 +64,6 @@ class FoodController extends Controller
     {
         $food = Food::findOrFail($request->id);
         $food->name = $request->name;
-        $food->address = $request->address;
         $food->restaurant_id = $request->restaurant;
         $food->category_id = $request->category;
         $food->note = $request->note;
@@ -78,12 +75,13 @@ class FoodController extends Controller
             $food->image = $path;
         }
         $food->save();
+//        $food->users()->sync($request->user);
         return redirect()->route("foods.index");
     }
 
-    public function foodOfRestaurant()
+    public function listFoodForAdmin()
     {
-        $food = Auth::user()->foods;
-        return view("backend.food.listDetail",compact("food"));
+        $foods = Food::all();
+        return view("backend.food.list",compact("foods"));
     }
 }

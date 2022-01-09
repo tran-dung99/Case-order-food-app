@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
+    public function index()
+    {
+        $restaurants = Restaurant::all();
+        return view("backend.restaurant.list",compact("restaurants"));
+    }
     public function create()
     {
         return view("backend.restaurant.create");
@@ -16,13 +21,12 @@ class RestaurantController extends Controller
 
     public function store(Request $request)
     {
-
         $restaurant = new Restaurant();
         $restaurant->name = $request->name;
         $restaurant->open_time = $request->open_time;
         $restaurant->close_time = $request->close_time;
         $restaurant->ship_time = $request->ship_time;
         $restaurant->save();
-        return redirect()->route("foods.showFormCreate");
+        return redirect()->route("restaurants.index");
     }
 }

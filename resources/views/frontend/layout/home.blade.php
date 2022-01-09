@@ -64,11 +64,11 @@
                             <a class="nav-link" href="about.html">Về</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="book.html">Bàn sách</a>
+                            <a class="nav-link" href="{{route('admin.showFormLogin')}}">Quản trị</a>
                         </li>
                     </ul>
                     <div class="user_option">
-                        <div style="background-color: white" width="50px">
+                        <div style="color: white">
                             @if(\Illuminate\Support\Facades\Auth::check())
                                 {{\Illuminate\Support\Facades\Auth::user()->name}}
                             @endif
@@ -414,7 +414,7 @@
                                   </div>
                                   <div class="detail-box">
                                       <h5>
-                                         <a class="detail+{{$food->name}}">{{$food->name}}</a>
+                                         <a class="detail-food" data-id="{{$food->id}}">{{$food->name}}</a>
                                       </h5>
                                       <p>
                                           {{$food->note}}
@@ -497,6 +497,25 @@
 
             </div>
 
+        </div>
+{{--modal--}}
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Chi tết món ăn</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary " id="close" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -701,4 +720,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('assets/food.js')}}"></script>
+<script src="{{asset('assets/detail-food.js')}}"></script>
+<script>
+   if() $("body").on("click",".detail-food",function (){
+
+    })
+
+</script>
 </html>

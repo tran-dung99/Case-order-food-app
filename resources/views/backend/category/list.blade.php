@@ -1,19 +1,23 @@
 @extends('backend.layout.master')
 @section('title','Food Admin')
-@section('foodList')
+@section('content')
 <div class="container">
 
-    <table class="table table-striped" style="margin-left: 100px;color: black">
+    <table class="table table-bordered" style="margin-left: 100px;color: black">
 
         <thead>
+
         <tr>
-            <th colspan="3"><a type="button" class="btn btn-success" href="{{route("categories.showFormCreate")}}">Create</a></th>
+            <th colspan="4"><a type="button" class="btn btn-success" href="{{route("categories.showFormCreate")}}">Create</a></th>
 
         </tr>
+
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Action</th>
+            @can('update_edit_category')
+            <th colspan="2">Action</th>
+            @endcan
         </tr>
         </thead>
         <tbody>
@@ -22,8 +26,10 @@
             <tr class="category-{{$category->id}}">
                 <td>{{$category->id}}</td>
                 <td>{{$category->name}}</td>
-                <td><button class="btn btn-warning delete-category" data-id="{{$category->id}}">Delete</button></td>
-                <td><a href="{{route("categories.showFormUpdate",$category->id)}}">Update</a></td>
+                @can('update_edit_category')
+                <td><a type="button" class="btn btn-primary" href="{{route("categories.showFormUpdate",$category->id)}}">Update</a></td>
+                <td><button class="btn btn-danger delete-category" data-id="{{$category->id}}">Delete</button></td>
+                @endcan
             </tr>
         @endforeach
         </tbody>

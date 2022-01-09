@@ -17,12 +17,12 @@ class CreateFoodsTable extends Migration
         Schema::create('foods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
             $table->string('image')->nullable();
             $table->string('note');
-            $table->unsignedBigInteger('restaurant_id');
-            $table->unsignedBigInteger('price');
+            $table->string('price');
             $table->integer('seen_time');
+            $table->unsignedBigInteger("restaurant_id");
+            $table->foreign("restaurant_id")->references("id")->on("restaurants");
             $table->timestamps();
         });
     }

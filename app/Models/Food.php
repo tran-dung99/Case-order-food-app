@@ -20,8 +20,13 @@ class Food extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    public function categoryy()
+    public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

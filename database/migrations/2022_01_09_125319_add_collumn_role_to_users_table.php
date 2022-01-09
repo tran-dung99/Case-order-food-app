@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCollumnCategoryIdToFoodsTable extends Migration
+class AddCollumnRoleToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCollumnCategoryIdToFoodsTable extends Migration
      */
     public function up()
     {
-        Schema::table('foods', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string("role");
         });
     }
 
@@ -25,7 +25,7 @@ class AddCollumnCategoryIdToFoodsTable extends Migration
      */
     public function down()
     {
-        Schema::table('foods', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

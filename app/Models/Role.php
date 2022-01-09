@@ -9,4 +9,10 @@ class Role extends Model
 {
     use HasFactory;
     protected $table = "roles";
+    protected $fillable = ['name','id'];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

@@ -27,4 +27,5 @@ Route::prefix('/home')->group(function() {
     Route::get('/noodle',[FoodController::class,"getByNoodle"])->name("home");
     Route::get('/drink',[FoodController::class,"getByDrink"])->name("home");
     Route::get('/all',[FoodController::class,"getAll"])->name("home");
+    Route::get('/detail/{id}',[FoodController::class,"show"])->name("home");
 });

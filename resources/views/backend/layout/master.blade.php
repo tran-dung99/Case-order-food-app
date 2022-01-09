@@ -45,8 +45,8 @@
     <div class="nav-header">
         <a href="index.html" class="brand-logo">
             <img class="logo-abbr" src="{{asset('backend/./images/logo.png')}}" alt="">
-            <img class="logo-compact" src="./images/logo-text.png" alt="">
-            <img class="brand-title" src="./images/logo-text.png" alt="">
+            <img class="logo-compact" src="{{asset('backend/./images/logo-text.png')}}" alt="">
+            <img class="brand-title" src="{{asset('backend/./images/logo-text.png')}}" alt="">
         </a>
 
         <div class="nav-control">
@@ -60,6 +60,7 @@
     ***********************************-->
 
     <!--**********************************
+
         Header start
     ***********************************-->
     <div class="header">
@@ -147,13 +148,13 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="./app-profile.html" class="dropdown-item">
                                     <i class="icon-user"></i>
-                                    <span class="ml-2">Profile </span>
+                                    <span class="ml-2">{{\Illuminate\Support\Facades\Auth::user()->name??''}}</span>
                                 </a>
                                 <a href="./email-inbox.html" class="dropdown-item">
                                     <i class="icon-envelope-open"></i>
                                     <span class="ml-2">Inbox </span>
                                 </a>
-                                <a href="./page-login.html" class="dropdown-item">
+                                <a href="{{route('admin.showFormLogin')}}" class="dropdown-item">
                                     <i class="icon-key"></i>
                                     <span class="ml-2">Logout </span>
                                 </a>
@@ -175,13 +176,11 @@
     <div class="quixnav">
         <div class="quixnav-scroll">
             <ul class="metismenu" id="menu">
-                <li class="nav-label first">Main Menu</li>
-
-                <li class="nav-label">Apps</li>
+                <li class="nav-label">Food</li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
+                            class="icon icon-app-store"></i><span class="nav-text">Quản Lý Người Dùng</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="./app-profile.html">Profile</a></li>
+                        <li><a href="{{route("users.list")}}">Danh sách người dùng</a></li>
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
                             <ul aria-expanded="false">
                                 <li><a href="./email-compose.html">Compose</a></li>
@@ -193,14 +192,16 @@
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
+                            class="icon icon-chart-bar-33"></i><span class="nav-text">Quản Lí Danh Sách Món Ăn</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="">Danh sách món ăn của nhà hàng</a></li>
-                        <li><a href="{{route("categories.index")}}">Danh mục</a></li>
-                        <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                        <li><a href="./chart-chartist.html">Chartist</a></li>
-                        <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                        <li><a href="./chart-peity.html">Peity</a></li>
+                        @can('user')
+                        <li><a href="{{route("foods.index")}}">Danh sách món ăn </a></li>
+                        @endcan
+                        @can('admin')
+                        <li><a href="{{route("foods.list")}}">Danh sách món ăn </a></li>
+                            @endcan
+                        <li><a href="{{route("categories.index")}}">Danh sách danh mục</a></li>
+                        <li><a href="{{route("restaurants.index")}}">Danh sách nhà hàng</a></li>
                     </ul>
                 </li>
                 <li class="nav-label">Components</li>
@@ -224,26 +225,19 @@
                         <li><a href="./ui-typography.html">Typography</a></li>
                         <li><a href="./ui-pagination.html">Pagination</a></li>
                         <li><a href="./ui-grid.html">Grid</a></li>
-
+                        <li><a href="./app-profile.html">Add New Food</a></li>
+                        <li><a href="./app-calender.html">Food List</a></li>
                     </ul>
                 </li>
 
+                <li class="nav-label">User</li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-plug"></i><span class="nav-text">Plugins</span></a>
+                            class="icon icon-world-2"></i><span class="nav-text">User</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="./uc-select2.html">Select 2</a></li>
-                        <li><a href="./uc-nestable.html">Nestedable</a></li>
-                        <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                        <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                        <li><a href="./uc-toastr.html">Toastr</a></li>
-                        <li><a href="./map-jqvmap.html">Jqv Map</a></li>
+                        <li><a href="./ui-accordion.html">Add New User</a></li>
+                        <li><a href="{{route('users.list')}}">User List</a></li>
                     </ul>
                 </li>
-
-
-
-
-
             </ul>
         </div>
 
@@ -260,9 +254,7 @@
         Content body start
     ***********************************-->
     <div class="content-body">
-        <!-- row -->
-        @yield('foodList')
-
+      @yield('content')
     </div>
     <!--**********************************
         Content body end

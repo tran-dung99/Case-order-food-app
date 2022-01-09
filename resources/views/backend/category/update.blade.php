@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('foodList')
+@section('content')
     <form method="post" enctype="multipart/form-data" action="{{route('categories.update')}}" style="color: black">
         <div class="col-12">
             @csrf

@@ -121,9 +121,9 @@ $(document).ready(function () {
                                str+=`<img src="${baseUrl}/storage/${res.data[i].image}">`
                             str+=`</div>
                             <div class="detail-box">
-                                <h5>
-                                    ${res.data[i].name}
-                                </h5>
+                                   <h5>
+                                         <a>${res.data[i].name}</a>
+                                      </h5>
                                 <p>
                                  ${res.data[i].note}
                                 </p>
@@ -216,8 +216,8 @@ $(document).ready(function () {
                             str +=`</div>
                             <div class="detail-box">
                                 <h5>
-                                    ${res.data[i].name}
-                                </h5>
+                                         <a>${res.data[i].name}</a>
+                                      </h5>
                                 <p>
                                  ${res.data[i].note}
                                 </p>
@@ -308,8 +308,8 @@ $(document).ready(function () {
                             str +=`</div>
                             <div class="detail-box">
                                 <h5>
-                                    ${res.data[i].name}
-                                </h5>
+                                         <a class="detail-food" data-id="${res.data[i].id}">${res.data[i].name}</a>
+                                      </h5>
                                 <p>
                                  ${res.data[i].note}
                                 </p>

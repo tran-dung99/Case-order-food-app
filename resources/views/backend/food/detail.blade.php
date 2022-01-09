@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 
-@section('foodList')
+@section('content')
 
         <div class="col-8">
             <div class="card" style="margin-left:50px;color: black">
@@ -10,12 +10,10 @@
             </div>
             <div class="col-md-8">
             <h2 class="card-title">{{$food->name}}</h2>
-                Địa chỉ:
-            <p class="card-text">{{$food->address}}</p>
                 Giá:
             <p class="card-text" style="color: orange; size: 20px">{{$food->price}}đ</p>
                 Danh mục:
-            <p class="card-text">{{$food->category}}</p>
+            <p class="card-text">{{$food->category->name}}</p>
                 Ghi chú:
             <p class="card-text">{{$food->note}}</p>
                 Lượt xem:

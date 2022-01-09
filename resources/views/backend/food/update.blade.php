@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('foodList')
+@section('content')
     <form method="post" enctype="multipart/form-data" action="{{route('foods.update')}}" style="color: black">
         <input type="hidden" name="id" value="{{$food->id}}">
     <div class="col-12">
@@ -35,8 +35,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="name">Địa chỉ</label>
-                                <input type="text" name="address" class="form-control" id="name" placeholder="Nhập địa chỉ món ăn" value="{{$food->address}}">
+                                <label for="category">Người Dùng</label>
+                                <select class="form-control" id="category" name="user">
+                                    @foreach(\App\Models\User::all() as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Ghi chú</label>
@@ -46,14 +50,7 @@
                                 <label for="exampleFormControlTextarea1">Giá</label>
                                 <input class="form-control" value="{{$food->price}}"  type="number" name="price" placeholder="Nhập giá món ăn">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Thời gian tạo</label>
-                                <input class="form-control" value="{{$food->create_at}}"  type="date" name="start_time">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Thời gian sửa</label>
-                                <input class="form-control"  type="date" name="edit_time">
-                            </div>
+
                             <div>
                                 <button type="submit" class="btn btn-primary">Update</button>
                                 <a href="{{route("foods.index")}}" class="btn btn-primary">Cancle</a>

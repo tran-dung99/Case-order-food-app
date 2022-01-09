@@ -1,14 +1,13 @@
 @extends('backend.layout.master')
 @section('name-list',"Danh sách món ăn")
 @section('title','Food Admin')
-@section('foodList')
+@section('content')
 <div class="container">
 <a type="button" class="btn btn-success" href="{{route("foods.showFormCreate")}}">Create</a>
-    <table class="table" style="color: #28284e" >
+    <table class="table table-bordered" style="color: #28284e" >
         <thead>
         <tr>
             <th>Name</th>
-            <th>Address</th>
             <th>Restaurant</th>
             <th>Price</th>
             <th>Action</th>

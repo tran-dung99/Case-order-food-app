@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 
-@section('foodList')
+@section('content')
     <form method="post" action="{{route("categories.create")}}">
         @csrf
         <div class="container">
