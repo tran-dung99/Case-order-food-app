@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,5 @@ Route::prefix('/home')->group(function() {
     Route::get('/drink',[FoodController::class,"getByDrink"])->name("home");
     Route::get('/all',[FoodController::class,"getAll"])->name("home");
 });
+
+Route::get('/users/delete/{id}',[UserController::class,'destroy'])->name('users.destroy');
