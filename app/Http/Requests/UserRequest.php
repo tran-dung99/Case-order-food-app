@@ -40,8 +40,6 @@ class UserRequest extends FormRequest
             'email.unique' => 'Email da ton tai',
             'phone.numeric'=>'Phải là số',
             'phone.min'=>'Phai co it nhat 10 so',
-
         ];
     }
-
 }

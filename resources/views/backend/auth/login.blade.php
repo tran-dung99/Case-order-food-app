@@ -7,11 +7,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Focus - Bootstrap Admin Dashboard </title>
     <!-- Favicon icon -->
+{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
+{{--    <link rel="stylesheet" type="text/css"--}}
+{{--          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">--}}
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">--}}
+{{--    </script>--}}
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link href="{{asset('backend/./css/style.css')}}" rel="stylesheet">
 
 </head>
-
+{{--<script>--}}
+{{--    @if(Session::has('message'))--}}
+{{--        toastr.options =--}}
+{{--        {--}}
+{{--            "closeButton" : true,--}}
+{{--            "progressBar" : true--}}
+{{--        }--}}
+{{--    toastr.success("{{ session('message') }}");--}}
+{{--    @endif--}}
+{{--</script>--}}
 <body class="h-100">
 <div class="authincation h-100">
     <div class="container-fluid h-100">

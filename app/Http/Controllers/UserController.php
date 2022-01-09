@@ -59,6 +59,12 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            "name" => "required",
+            "phone" => "required",
+            "email" => "required",
+            "password" => "required",
+        ]);
         $user = User::findOrFail($id);
         $user->name = $request->name;
         if ($request->hasFile('image')){
@@ -70,7 +76,7 @@ class UserController extends Controller
         $user->password = $request->password;
         $user->role_id = $request->role_id;
         $user->save();
-        return redirect()->route('users.list');
+        return redirect()->route('users.list')->with('message','Sửa user thành công');
     }
 
     public function destroy($id)
