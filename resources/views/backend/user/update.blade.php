@@ -16,18 +16,30 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" name="name" class="form-control" id="name" value="{{$user->name}}">
+                            @error('name')
+                            <p style="color: red">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="name">Phone</label>
                             <input type="number" name="phone" class="form-control" id="phone" value="{{$user->phone}}">
+                            @error('phone')
+                            <p style="color: red">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Email</label>
                             <input type="text" name="email" class="form-control" id="email"  value="{{$user->email}}">
+                            @error('email')
+                            <p style="color: red">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Password</label>
                             <input type="password" name="password"  class="form-control"  value="{{$user->password}}">
+                            @error('password')
+                            <p style="color: red">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Role</label><br>

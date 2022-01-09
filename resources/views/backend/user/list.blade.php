@@ -1,5 +1,15 @@
 @extends('backend.layout.master')
 @section('content')
+    <script>
+        @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+        toastr.success("{{ session('message') }}");
+        @endif
+    </script>
 <table class="table table-bordered" style= "color: #28284e">
     <thead>
     <tr>

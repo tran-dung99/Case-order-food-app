@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Focus - Bootstrap Admin Dashboard </title>
     <!-- Favicon icon -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">
+    </script>
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('backend/./images/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('backend/./vendor/owl-carousel/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/./vendor/owl-carousel/css/owl.theme.default.min.css')}}">
