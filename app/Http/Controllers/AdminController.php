@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
 
-
     public function showFormLoginAdmin()
     {
         return view('backend.auth.login');
@@ -30,25 +29,24 @@ class AdminController extends Controller
         }
     }
 
-    public function logoutAdmin()
-    {
-        Auth::logoutAdmin();
-        return view('backend.auth.login');
+//    public function logoutAdmin()
+//    {
+//        Auth::logout();
+//        return view('backend.auth.login');
+//    }
+//
+
+    public function logoutAdmin(Request $request) {
+        Auth::user()->tokens->delete();
+        Auth::logout();
+        return response()->json('Successfully logged out');
     }
+
 
     public function showFormRegisterAdmin()
     {
         return view('backend.auth.register');
     }
-//
-//    public function registerAdmin(Request $request)
-//    {
-//        $data = $request->only('name','phone','email','password');
-//        $data["password"] = Hash::make($request->password);
-//        User::create($data);
-//        Session::flash('message','Đăng ký thành công rực rỡ');
-//        return redirect()->route("admin.showFormLogin");
-//    }
 
     public function registerAdmin(Request $request)
     {

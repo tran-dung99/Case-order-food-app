@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
     public function index()
     {
         $users = User::all();
@@ -67,7 +68,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = $request->password;
-//        $user->role_id = $request->role_id;
+        $user->role_id = $request->role_id;
         $user->save();
         return redirect()->route('users.list');
     }

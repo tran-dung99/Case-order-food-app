@@ -31,7 +31,15 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Role</label><br>
-                            <input class="form-control" type="number" name="role_id" value="{{$user->role_id}}">
+                            <select name="role_id" class="form-control">
+                                @foreach(\App\Models\Role::all() as  $role)
+                                    @if($role->id == $user->role_id)
+                                        <option value="{{ $role->id }}" selected>{{ $role->name }}</option>
+                                    @else
+                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary">Save User</button>

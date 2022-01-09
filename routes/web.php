@@ -1,6 +1,4 @@
 <?php
-
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FoodController;
@@ -27,7 +25,6 @@ Route::get('/register',[AuthController::class,"showFormRegister"])->name("home.s
 Route::post('/register',[AuthController::class,"register"])->name("home.register");
 
 
-
 Route::get('/master',[AdminController::class,"index"])->name("master");
 
 Route::get('/showFormLoginAdmin',[AdminController::class,"showFormLoginAdmin"])->name("admin.showFormLogin");
@@ -35,6 +32,7 @@ Route::post('/loginAdmin',[AdminController::class,"loginAdmin"])->name("admin.lo
 Route::get('/logoutAdmin',[AdminController::class,"logoutAdmin"])->name("admin.logout");
 Route::get('/registerAdmin',[AdminController::class,"showFormRegisterAdmin"])->name("admin.showFormRegister");
 Route::post('/registerAdmin',[AdminController::class,"registerAdmin"])->name("admin.register");
+
 
 Route::prefix('users')->group(function (){
     Route::get('/',[UserController::class,"index"])->name("users.list");
@@ -59,5 +57,15 @@ Route::prefix('/foods')->group(function(){
     Route::get('/{id}/deleteFavorite',[FoodController::class,"deleteFavorite"])->name("deleteFavorite");
     Route::get('/{id}/deleteFavorite2',[FoodController::class,"deleteFavorite2"])->name("deleteFavorite2");
 
+});
+
+
+
+
+Route::middleware('auth')->prefix('users')->group(function (){
+        Route:: get('/',[UserController::class,"index"])->name("users.list");
+        Route::get('/{id}/detail',[UserController::class,"show"])->name("users.show");
+        Route::get('/{id}/update',[UserController::class,"edit"])->name("users.edit");
+        Route::post('/{id}/update',[UserController::class,"update"])->name("users.update");
 });
 
