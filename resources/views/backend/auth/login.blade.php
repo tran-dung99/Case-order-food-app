@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label><strong>Password</strong></label>
-                                        <input type="password" name="password" class="form-control" value="Password">
+                                        <input type="password" name="password" class="form-control">
                                     </div>
                                     <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                         <div class="form-group">

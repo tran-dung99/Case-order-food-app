@@ -149,13 +149,13 @@
         </div>
     @endif
     <label for="email">Email</label>
-    <input type="text" name="email" placeholder="Email or Phone" id="email">
+    <input type="text" name="email" id="email" placeholder="hello@gmail.com">
 
     <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Password" id="password">
+    <input type="password" name="password" id="password" >
 
     <button type="submit">Log In</button>
-    Bạn chưa có tài khoản: <a href="{{route('home.showFormRegister')}}">Register</a>
+    Do not have an account: <a href="{{route('home.showFormRegister')}}">Register</a>
     <div class="social">
         <div class="go"><i class="fab fa-google"></i>  Google</div>
         <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>

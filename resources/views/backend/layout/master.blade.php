@@ -45,8 +45,8 @@
     <div class="nav-header">
         <a href="index.html" class="brand-logo">
             <img class="logo-abbr" src="{{asset('backend/./images/logo.png')}}" alt="">
-            <img class="logo-compact" src="./images/logo-text.png" alt="">
-            <img class="brand-title" src="./images/logo-text.png" alt="">
+            <img class="logo-compact" src="{{asset('backend/./images/logo-text.png')}}" alt="">
+            <img class="brand-title" src="{{asset('backend/./images/logo-text.png')}}" alt="">
         </a>
 
         <div class="nav-control">
@@ -147,7 +147,7 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="./app-profile.html" class="dropdown-item">
                                     <i class="icon-user"></i>
-                                    <span class="ml-2">Profile </span>
+                                    <span class="ml-2">{{\Illuminate\Support\Facades\Auth::user()->name??''}}</span>
                                 </a>
                                 <a href="./email-inbox.html" class="dropdown-item">
                                     <i class="icon-envelope-open"></i>
@@ -174,75 +174,23 @@
     <div class="quixnav">
         <div class="quixnav-scroll">
             <ul class="metismenu" id="menu">
-                <li class="nav-label first">Main Menu</li>
-
-                <li class="nav-label">Apps</li>
+                <li class="nav-label">Food</li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
+                            class="icon icon-app-store"></i><span class="nav-text">Food</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="./app-profile.html">Profile</a></li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                            <ul aria-expanded="false">
-                                <li><a href="./email-compose.html">Compose</a></li>
-                                <li><a href="./email-inbox.html">Inbox</a></li>
-                                <li><a href="./email-read.html">Read</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./app-calender.html">Calendar</a></li>
-                    </ul>
-                </li>
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
-                    <ul aria-expanded="false">
-                        <li><a href="./chart-flot.html">Flot</a></li>
-                        <li><a href="./chart-morris.html">Morris</a></li>
-                        <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                        <li><a href="./chart-chartist.html">Chartist</a></li>
-                        <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                        <li><a href="./chart-peity.html">Peity</a></li>
-                    </ul>
-                </li>
-                <li class="nav-label">Components</li>
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-world-2"></i><span class="nav-text">Bootstrap</span></a>
-                    <ul aria-expanded="false">
-                        <li><a href="./ui-accordion.html">Accordion</a></li>
-                        <li><a href="./ui-alert.html">Alert</a></li>
-                        <li><a href="./ui-badge.html">Badge</a></li>
-                        <li><a href="./ui-button.html">Button</a></li>
-                        <li><a href="./ui-modal.html">Modal</a></li>
-                        <li><a href="./ui-button-group.html">Button Group</a></li>
-                        <li><a href="./ui-list-group.html">List Group</a></li>
-                        <li><a href="./ui-media-object.html">Media Object</a></li>
-                        <li><a href="./ui-card.html">Cards</a></li>
-                        <li><a href="./ui-carousel.html">Carousel</a></li>
-                        <li><a href="./ui-dropdown.html">Dropdown</a></li>
-                        <li><a href="./ui-popover.html">Popover</a></li>
-                        <li><a href="./ui-progressbar.html">Progressbar</a></li>
-                        <li><a href="./ui-tab.html">Tab</a></li>
-                        <li><a href="./ui-typography.html">Typography</a></li>
-                        <li><a href="./ui-pagination.html">Pagination</a></li>
-                        <li><a href="./ui-grid.html">Grid</a></li>
-
+                        <li><a href="./app-profile.html">Add New Food</a></li>
+                        <li><a href="./app-calender.html">Food List</a></li>
                     </ul>
                 </li>
 
+                <li class="nav-label">User</li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-plug"></i><span class="nav-text">Plugins</span></a>
+                            class="icon icon-world-2"></i><span class="nav-text">User</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="./uc-select2.html">Select 2</a></li>
-                        <li><a href="./uc-nestable.html">Nestedable</a></li>
-                        <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                        <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                        <li><a href="./uc-toastr.html">Toastr</a></li>
-                        <li><a href="./map-jqvmap.html">Jqv Map</a></li>
+                        <li><a href="./ui-accordion.html">Add New User</a></li>
+                        <li><a href="{{route('users.list')}}">User List</a></li>
                     </ul>
                 </li>
-
-
-
-
-
             </ul>
         </div>
 
@@ -257,7 +205,7 @@
     ***********************************-->
     <div class="content-body">
         <!-- row -->
-
+      @yield('content')
     </div>
     <!--**********************************
         Content body end

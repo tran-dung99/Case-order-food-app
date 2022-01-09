@@ -38,8 +38,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label><strong>Password</strong></label>
-                                        <input type="password" class="form-control" name="password" value="Password">
+                                        <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
+                                    <div class="form-group">
+                                        <label><strong>Role</strong></label><br>
+                                        <select name="role_id" id="">
+                                            <option value="1">Admin</option>
+                                            <option value="2">User</option>
+                                        </select>
+{{--                                        <input type="text" class="form-control" name="role_id" placeholder="Role">--}}
+                                    </div>
+
                                     <div class="text-center mt-4">
                                         <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
                                     </div>

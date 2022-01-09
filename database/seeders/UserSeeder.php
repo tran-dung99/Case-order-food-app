@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->name = "Admin";
         $user->email = "admin@gmail.com";
+        $user->role_id = "1";
         $user->password = Hash::make('123123');
         $user->phone = '0977546351';
         $user->role_id = '1';
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->name = "Hoa";
         $user->email = "hoa@gmail.com";
+        $user->role_id = Role::all()->random()->id;
         $user->password = Hash::make('123123');
         $user->phone = '0954821657';
         $user->role_id = '2';
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->name = "Nga";
         $user->email = "nga@gmail.com";
+        $user->role_id = Role::all()->random()->id;
         $user->password = Hash::make('123123');
         $user->phone = '0962458124';
         $user->role_id = '2';
@@ -43,6 +46,7 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->name = "Hoàng";
         $user->email = "hoang@gmail.com";
+        $user->role_id = Role::all()->random()->id;
         $user->password = Hash::make('123123');
         $user->phone = '0856248751';
         $user->role_id = Role::all()->random()->id;

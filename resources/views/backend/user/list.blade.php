@@ -1,13 +1,13 @@
-<table class="table table-bordered">
+@extends('backend.layout.master')
+@section('content')
+<table class="table table-bordered" style= "color: #28284e">
     <thead>
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Image</th>
         <th>Phone</th>
         <th>Email</th>
-        <th>Password</th>
-        <th>Role_id</th>
+        <th>Role</th>
         <th colspan="3">Action</th>
     </tr>
     </thead>
@@ -16,18 +16,15 @@
     <tr>
         <td>{{$key+1}}</td>
         <td>{{$user["name"]}}</td>
-        <td style="width: 250px; height: 180px"><img  src="img/{{$user->image}}" alt=""></td>
         <td>{{$user["phone"]}}</td>
         <td>{{$user["email"]}}</td>
-        <td>{{$user["password"]}}</td>
         <td>
-            @if($user->role_id)
-                <p>{{$user->role->name}}</p>
-            @else
-                <p>Chưa phân loại role</p>
-            @endif
+            {{$user->role->name}}
         </td>
+        <td><a href="{{route('users.show',$user->id)}}"><button type="button" class="btn btn-outline-info">Detail</button></a></td>
+        <td><a href="{{route('users.edit',$user->id)}}"><button type="button" class="btn btn-outline-warning">Update</button></a></td>
     </tr>
     @endforeach
     </tbody>
 </table>
+@endsection

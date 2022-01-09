@@ -143,16 +143,20 @@
     <h3>Sing up Here</h3>
 
     <label for="name">Name</label>
-    <input type="text" name="name" placeholder="Name" id="name">
+    <input type="text" name="name" placeholder="hello" id="name">
 
+    <label for="name">Phone</label>
+    <input type="phone" name="phone" placeholder="+84" id="phone">
 
     <label for="email">Email</label>
-    <input type="text" name="email" placeholder="Email or Phone" id="email">
+    <input type="text" name="email" placeholder="hello@gmail.com" id="email">
 
     <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Password" id="password">
+    <input type="password" name="password" placeholder="*******" id="password">
 
-    <button type="submit"><a href="{{route('home.showFormLogin')}}">Sign up</a></button>
+    <input type="hidden" name="role_id" id="role_id" value="3">
+
+    <button type="submit">Sign up</button>
     <button type="submit"><a href="{{route('home.showFormLogin')}}">Cancel</a></button>
 </form>
 </body>

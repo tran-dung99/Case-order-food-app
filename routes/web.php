@@ -1,9 +1,12 @@
 <?php
 
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FoodController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route("home");
-});
 
-Route::get('/home',[AuthController::class,"index"])->name("home");
+Route::get('/',[FoodController::class,"index"])->name("home");
 
 Route::get('/showFormLogin',[AuthController::class,"showFormLogin"])->name("home.showFormLogin");
 Route::post('/login',[AuthController::class,"login"])->name("home.login");
@@ -40,4 +40,12 @@ Route::post('/registerAdmin',[AdminController::class,"registerAdmin"])->name("ad
 
 Route::prefix('users')->group(function (){
     Route::get('/',[UserController::class,"index"])->name("users.list");
+    Route::get('/{id}/detail',[UserController::class,"show"])->name("users.show");
+    Route::get('/{id}/update',[UserController::class,"edit"])->name("users.edit");
+    Route::post('/{id}/update',[UserController::class,"update"])->name("users.update");
 });
+
+
+Route::get('/admin',function (){
+    return view('backend.user.list');
+})->name("admin.web");
