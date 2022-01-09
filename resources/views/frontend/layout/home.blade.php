@@ -64,11 +64,11 @@
                             <a class="nav-link" href="about.html">Về</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="book.html">Bàn sách</a>
+                            <a class="nav-link" href="{{route('admin.showFormLogin')}}">Quản trị</a>
                         </li>
                     </ul>
                     <div class="user_option">
-                        <div style="background-color: white" width="50px">
+                        <div style="color: white">
                             @if(\Illuminate\Support\Facades\Auth::check())
                                 {{\Illuminate\Support\Facades\Auth::user()->name}}
                             @endif

@@ -23,7 +23,7 @@ class FoodSeeder extends Seeder
         $food->restaurant_id = Restaurant::all()->random()->id;
         $food->note = "abc";
         $food->price = "30000";
-        $food->seen_time = "0";
+        $food->seen_time = 0;
         $food->save();
 
         $food = new Food();
@@ -33,7 +33,7 @@ class FoodSeeder extends Seeder
         $food->restaurant_id = Restaurant::all()->random()->id;
         $food->note = "abc";
         $food->price = "30000";
-        $food->seen_time = "0";
+        $food->seen_time = 0;
         $food->save();
 
         $food = new Food();
@@ -43,7 +43,7 @@ class FoodSeeder extends Seeder
         $food->restaurant_id = Restaurant::all()->random()->id;
         $food->note = "abc";
         $food->price = "30000";
-        $food->seen_time = "0";
+        $food->seen_time = 0;
         $food->save();
 
         $food = new Food();
@@ -53,7 +53,7 @@ class FoodSeeder extends Seeder
         $food->restaurant_id = Restaurant::all()->random()->id;
         $food->note = "abc";
         $food->price = "30000";
-        $food->seen_time = "0";
+        $food->seen_time = 0;
         $food->save();
 
         $food = new Food();
@@ -63,7 +63,7 @@ class FoodSeeder extends Seeder
         $food->restaurant_id = Restaurant::all()->random()->id;
         $food->note = "abc";
         $food->price = "30000";
-        $food->seen_time = "0";
+        $food->seen_time = 0;
         $food->save();
     }
 }

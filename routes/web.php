@@ -1,9 +1,12 @@
 <?php
 
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,35 +19,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//
-//    return view('auth.login');
-//});
-//Route::middleware("auth")->group(function(){
-//    Route::prefix('/foods')->group(function(){
-//        Route::get('/',[FoodController::class,"index"])->name("foods.index");
-//        Route::get('/detail/{id}',[FoodController::class,"show"])->name("foods.detail");
-//        Route::get('/com',[FoodController::class,"getByCom"])->name("foods.getByCom");
-//        Route::get('/pho',[FoodController::class,"getByPho"])->name("foods.getByPho");
-//        Route::get('/douong',[FoodController::class,"getByDouong"])->name("foods.getByDouong");
-//    });
-//    Route::get('/logout',[AuthController::class,"Logout"])->name("logout");
-//});
-//
-//Route::get('/showFormLogin',[AuthController::class,"showFormLogin"])->name("auth.login");
-//Route::post('/login',[AuthController::class,"login"])->name("login");
-//
-//
-//    return redirect()->route("home");
-//});
-
-
-Route::get('/home',[FoodController::class,"index"])->name("home");
+Route::get('/',[FoodController::class,"index"])->name("home");
 Route::get('/showFormLogin',[AuthController::class,"showFormLogin"])->name("home.showFormLogin");
 Route::post('/login',[AuthController::class,"login"])->name("home.login");
-
 Route::get('/logout',[AuthController::class,"logout"])->name("home.logout");
-
 Route::get('/register',[AuthController::class,"showFormRegister"])->name("home.showFormRegister");
 Route::post('/register',[AuthController::class,"register"])->name("home.register");
 
+
+
+Route::get('/master',[AdminController::class,"index"])->name("master");
+
+Route::get('/showFormLoginAdmin',[AdminController::class,"showFormLoginAdmin"])->name("admin.showFormLogin");
+Route::post('/loginAdmin',[AdminController::class,"loginAdmin"])->name("admin.login");
+Route::get('/logoutAdmin',[AdminController::class,"logoutAdmin"])->name("admin.logout");
+Route::get('/registerAdmin',[AdminController::class,"showFormRegisterAdmin"])->name("admin.showFormRegister");
+Route::post('/registerAdmin',[AdminController::class,"registerAdmin"])->name("admin.register");
+
+Route::prefix('users')->group(function (){
+    Route::get('/',[UserController::class,"index"])->name("users.list");
+    Route::get('/{id}/detail',[UserController::class,"show"])->name("users.show");
+    Route::get('/{id}/update',[UserController::class,"edit"])->name("users.edit");
+    Route::post('/{id}/update',[UserController::class,"update"])->name("users.update");
+});
+
+
+Route::get('/admin',function (){
+    return view('backend.user.list');
+})->name("admin.web");
