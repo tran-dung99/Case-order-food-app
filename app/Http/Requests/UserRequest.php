@@ -24,20 +24,22 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required",
-            "phone" => "required",
-            "email" => "required",
-            "password" => "required",
+            'name' => 'required|min:2',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|numeric|min:10',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Trường name không được để trống',
-            'phone.required' => 'Trường phone không được để trống',
-            'email.required' => 'Trường email không được để trống',
-            'password.required' => 'Trường password không được để trống',
+            'name.required' => 'Ten khong duoc de trong',
+            'name.min' => 'Ten co it nhat 3 ky tu tro len',
+            'email.required' => 'Email khong duoc de trong',
+            'email.email' => 'Email khong dung dinh dang',
+            'email.unique' => 'Email da ton tai',
+            'phone.numeric'=>'Phải là số',
+            'phone.min'=>'Phai co it nhat 10 so',
         ];
     }
 }
