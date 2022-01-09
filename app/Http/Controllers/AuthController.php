@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Food;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,15 +19,6 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-
-//        if(!Auth::attempt($data)){
-//            session()->flash('error-login', 'Tài khoản không đúng!');
-//            return redirect()->route('auth.login');
-//
-//        }else{
-//            return redirect()->route("foods.index");
-//        }
-
         $data = $request->only('email','password');
         if (Auth::attempt($data)) {
             $foods = Food::all();
@@ -52,14 +42,6 @@ class AuthController extends Controller
         return view('frontend.auth.register');
     }
 
-//    public function register(Request $request)
-//    {
-//        $data = $request->only('name','phone','email','password');
-//        $data["password"] = Hash::make($request->password);
-//        User::create($data);
-//        Session::flash('message','Đăng ký thành công rực rỡ');
-//        return redirect()->route("home.showFormLogin");
-//    }
     public function register(Request $request)
     {
         $user = new User();

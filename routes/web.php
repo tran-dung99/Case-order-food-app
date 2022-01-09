@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/',[FoodController::class,"index"])->name("home");
-
 Route::get('/showFormLogin',[AuthController::class,"showFormLogin"])->name("home.showFormLogin");
 Route::post('/login',[AuthController::class,"login"])->name("home.login");
 Route::get('/logout',[AuthController::class,"logout"])->name("home.logout");
