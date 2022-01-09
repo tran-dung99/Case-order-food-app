@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Food;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,8 @@ class AuthController extends Controller
 
         $data = $request->only('email','password');
         if (Auth::attempt($data)) {
-            return view('frontend.layout.home');
+            $foods = Food::all();
+            return view('frontend.layout.home',compact("foods"));
 
         } else {
             dd("Login Fail");
@@ -40,7 +42,8 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return view('frontend.layout.home');
+        $foods = Food::all();
+        return view('frontend.layout.home',compact("foods"));
     }
 
     public function showFormRegister()

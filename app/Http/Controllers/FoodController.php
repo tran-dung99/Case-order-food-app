@@ -21,13 +21,13 @@ class FoodController extends Controller
 
     public function getByRice()
     {
-        $foodRices = Food::where('category','LIKE','Cơm')->get();
+        $foodRices = Food::where('category_id','LIKE','1')->get();
         return response()->json(["data"=>$foodRices]);
      }
 
     public function getByNoodle()
     {
-        $foodNoodles = Food::where('category','LIKE','Phở')->get();
+        $foodNoodles = Food::where('category_id','LIKE','2')->get();
         return response()->json(["data"=>$foodNoodles]);
     }
 
@@ -39,7 +39,7 @@ class FoodController extends Controller
 
     public function getByDrink()
     {
-        $foodDrinks = Food::where('category','LIKE','Đồ uống')->get();
+        $foodDrinks = Food::where('category_id','LIKE','3')->get();
         return response()->json(["data"=>$foodDrinks]);
     }
     /**

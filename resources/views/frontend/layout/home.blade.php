@@ -15,6 +15,7 @@
 
     <title> Feane </title>
 
+
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/bootstrap.css')}}" />
 
@@ -51,7 +52,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class=""> </span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  mx-auto ">
                         <li class="nav-item active">
@@ -388,9 +388,9 @@
 
         <ul class="filters_menu">
             <li class="all" >All</li>
-            <li  data-filter=".noodle" class="noodle">Mỳ Phở</li>
-            <li data-filter=".rice" class="rice">Cơm</li>
-            <li  data-filter=".drink" class="drink">Đồ uống</li>
+            <li   class="noodle">Mỳ Phở</li>
+            <li  class="rice">Cơm</li>
+            <li   class="drink">Đồ uống</li>
         </ul>
 
 
@@ -410,7 +410,7 @@
                           <div class="box">
                               <div>
                                   <div class="img-box">
-                                      <img src="{{asset('frontend/images/f1.png')}}" alt="">
+                                      <img height="100%" src="{{asset('storage/'.$food->image)}}" alt="">
                                   </div>
                                   <div class="detail-box">
                                       <h5>
@@ -498,6 +498,7 @@
             </div>
 
         </div>
+    </div>
 
 </section>
 
@@ -531,6 +532,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

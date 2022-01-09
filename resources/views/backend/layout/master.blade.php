@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <title>@yield('title') </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('backend/./images/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('backend/./vendor/owl-carousel/css/owl.carousel.min.css')}}">
@@ -164,6 +164,7 @@
             </nav>
         </div>
     </div>
+
     <!--**********************************
         Header end ti-comment-alt
     ***********************************-->
@@ -194,8 +195,8 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="./chart-flot.html">Flot</a></li>
-                        <li><a href="./chart-morris.html">Morris</a></li>
+                        <li><a href="">Danh sách món ăn của nhà hàng</a></li>
+                        <li><a href="{{route("categories.index")}}">Danh mục</a></li>
                         <li><a href="./chart-chartjs.html">Chartjs</a></li>
                         <li><a href="./chart-chartist.html">Chartist</a></li>
                         <li><a href="./chart-sparkline.html">Sparkline</a></li>
@@ -248,6 +249,9 @@
 
 
     </div>
+    <div>
+        <h2>@yield('name-list')</h2>
+    </div>
     <!--**********************************
         Sidebar end
     ***********************************-->
@@ -257,6 +261,7 @@
     ***********************************-->
     <div class="content-body">
         <!-- row -->
+        @yield('foodList')
 
     </div>
     <!--**********************************

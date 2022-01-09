@@ -1,22 +1,6 @@
 $(document).ready(function () {
     let baseUrl = origin;
 
-    $("body").on("click",".detail-food",function (){
-        $('.modal').show();
-        $.ajax({
-            url: baseUrl,
-            type: 'GET',
-            success:function (res) {
-                console.log(res)
-            }
-        })
-    })
-
-    $("body").on("click",".close",function (){
-        $('.modal').hide();
-    })
-
-
     $("body").on("keyup",".input-search",function () {
         let searchName = $(".input-search").val();
         $.ajax({
@@ -117,6 +101,7 @@ $(document).ready(function () {
     })
 
     $("body").on("click",".rice",function() {
+
             $(".all-list").hide();
             $(".noodle-list").hide();
             $(".drink-list").hide();
@@ -131,9 +116,10 @@ $(document).ready(function () {
                         str += ` <div class="col-sm-6 col-lg-4 all pizza">
                     <div class="box">
                         <div>
-                            <div class="img-box">
-                                <img src="{{asset('frontend/images/f1.png')}}" alt="">
-                            </div>
+                            <div class="img-box">`
+
+                               str+=`<img src="${baseUrl}/storage/${res.data[i].image}">`
+                            str+=`</div>
                             <div class="detail-box">
                                 <h5>
                                     ${res.data[i].name}
@@ -225,9 +211,9 @@ $(document).ready(function () {
                     str += ` <div class="col-sm-6 col-lg-4 all pizza">
                     <div class="box">
                         <div>
-                            <div class="img-box">
-                                <img src="{{asset('frontend/images/f1.png')}}" alt="">
-                            </div>
+                            <div class="img-box">`
+                    str+=`<img src="${baseUrl}/storage/${res.data[i].image}">`
+                            str +=`</div>
                             <div class="detail-box">
                                 <h5>
                                     ${res.data[i].name}
@@ -317,9 +303,9 @@ $(document).ready(function () {
                     str += ` <div class="col-sm-6 col-lg-4 all pizza">
                     <div class="box">
                         <div>
-                            <div class="img-box">
-                                <img src="{{asset('frontend/images/f1.png')}}" alt="">
-                            </div>
+                            <div class="img-box">`
+                                 str+=`<img src="${baseUrl}/storage/${res.data[i].image}">`
+                            str +=`</div>
                             <div class="detail-box">
                                 <h5>
                                     ${res.data[i].name}
