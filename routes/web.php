@@ -41,9 +41,23 @@ Route::prefix('users')->group(function (){
     Route::get('/{id}/detail',[UserController::class,"show"])->name("users.show");
     Route::get('/{id}/update',[UserController::class,"edit"])->name("users.edit");
     Route::post('/{id}/update',[UserController::class,"update"])->name("users.update");
+    Route::get('/create',[UserController::class,"create"])->name("users.create");
+    Route::post('/create',[UserController::class,"store"])->name("users.store");
 });
 
 
 Route::get('/admin',function (){
     return view('backend.user.list');
 })->name("admin.web");
+
+
+
+//Giỏ hàng
+Route::prefix('/foods')->group(function(){
+    Route::get('/{id}/foodmark',[FoodController::class,'addToFavorite'])->name('foods.addToFavorite');
+    Route::get('/favorite',[FoodController::class,'showFavoriteList'])->name('foods.showFavoriteList');
+    Route::get('/{id}/deleteFavorite',[FoodController::class,"deleteFavorite"])->name("deleteFavorite");
+    Route::get('/{id}/deleteFavorite2',[FoodController::class,"deleteFavorite2"])->name("deleteFavorite2");
+
+});
+

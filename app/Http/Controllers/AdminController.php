@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-        return view('backend.layout.master');
-    }
+
 
     public function showFormLoginAdmin()
     {
@@ -25,8 +22,8 @@ class AdminController extends Controller
 
         $data = $request->only('email','password');
         if (Auth::attempt($data) && (Auth::user()->role_id == '1' || Auth::user()->role_id == '2')) {
-            $users = User::all();
-            return view('backend.user.list',compact('users'));
+
+            return redirect()->route('users.list');
         } else {
             session()->flash('error-login', 'Tài khoản không đúng!');
             return view('backend.auth.login');
