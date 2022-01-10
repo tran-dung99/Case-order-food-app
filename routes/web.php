@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 //Trang web customer
 Route::get('/home', [FoodController::class, "index"])->name("home");
 
-
 Route::get('/', [FoodController::class, "index"])->name("home");
 Route::get('/showFormLogin', [AuthController::class, "showFormLogin"])->name("home.showFormLogin");
 Route::post('/login', [AuthController::class, "login"])->name("home.login");
@@ -42,7 +41,6 @@ Route::prefix('/admin/foods')->group(function () {
 });
 
 
-
 Route::get('/admin/login', [AdminController::class, "showFormLoginAdmin"])->name("admin.showFormLogin");
 Route::post('/admin/login', [AdminController::class, "loginAdmin"])->name("admin.login");
 Route::get('/admin/logout', [AdminController::class, "logoutAdmin"])->name("admin.logout");
@@ -51,9 +49,6 @@ Route::post('/registerAdmin', [AdminController::class, "registerAdmin"])->name("
 
 
 //Route::get('/master',[AdminController::class,"index"])->name("master");
-
-
-
 
 Route::middleware("auth")->group(function () {
     Route::prefix("/admin")->group(function () {
@@ -79,14 +74,7 @@ Route::middleware("auth")->group(function () {
             Route::post("/update", [\App\Http\Controllers\admin\CategoryController::class, "update"])->name("categories.update");
         });
     });
-
-
 });
-
-
-
-
-
 
 
 Route::prefix('users')->group(function (){
@@ -97,10 +85,6 @@ Route::prefix('users')->group(function (){
     Route::get('/create',[UserController::class,"create"])->name("users.create");
     Route::post('/create',[UserController::class,"store"])->name("users.store");
 });
-
-
-
-
 
 
 //Giỏ hàng
