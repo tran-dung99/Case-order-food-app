@@ -182,7 +182,6 @@
         <div class="quixnav-scroll">
             <ul class="metismenu" id="menu">
                 <li class="nav-label">ADMIN </li>
-                @can('admin')
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-app-store"></i><span class="nav-text">Quản Lý Người Dùng</span></a>
 
@@ -192,26 +191,40 @@
                     </ul>
 
                 </li>
-                @endcan
+
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-chart-bar-33"></i><span class="nav-text">Quản Lí Danh Sách Món Ăn</span></a>
+                            class="icon icon-chart-bar-33"></i><span class="nav-text">Quản Lý Danh Sách Món Ăn</span></a>
                     <ul aria-expanded="false">
                         @can('user')
                         <li><a href="{{route("foods.index")}}">Danh sách món ăn </a></li>
+                        <li><a href="{{route("foods.showFormCreate")}}">Tạo mới món ăn </a></li>
                         @endcan
-                            @can('user')
-                            <li><a href="{{route("categories.index")}}">Danh sách danh mục</a></li>
-                            @endcan
-                            @can('user')
-                        <li><a href="{{route("restaurants.index")}}">Danh sách nhà hàng</a></li>
-                            @endcan
-                            @can('admin')
-                                <li><a href="{{route("restaurants.list")}}">Danh sách nhà hàng</a></li>
-                            @endcan
+
+
                     </ul>
                 </li>
+                @can('user')
+                    <li> <a class="has-arrow" href="{{route("categories.index")}}" aria-expanded="false"><i
+                            class="icon icon-app-store"></i><span class="nav-text">Danh sách danh mục</span></a>
+                    </li>
+                @endcan
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                            class="icon icon-app-store"></i><span class="nav-text">Quản Lý Nhà Hàng</span></a>
 
-                <li class="nav-label">User</li>
+                    <ul aria-expanded="false">
+                        @can('admin')
+                             <li><a href="{{route("restaurants.list")}}">Danh sách nhà hàng</a></li>
+                        @endcan
+                            @can('user')
+                                <li><a href="{{route("restaurants.index")}}">Danh sách nhà hàng</a></li>
+                            @endcan
+                        <li><a href="{{route("restaurants.showFormCreate")}}">Tạo mới nhà hàng</a></li>
+                    </ul>
+
+                </li>
+
+
+
 
             </ul>
         </div>
