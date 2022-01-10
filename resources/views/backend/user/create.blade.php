@@ -48,20 +48,14 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Role</label><br>
-                        <select name="role_id">
-                            @foreach(\App\Models\Role::all() as  $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
+                        <select name="role_id" class="form-control">
+                            <option value="1">Amin</option>
+                            <option value="2">User</option>
                         </select>
                     </div>
-
-
                     <div>
                         <input type="file" name="image">
                     </div><br>
-
-
-
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <title>@yield('title') </title>
     <!-- Favicon icon -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css"
@@ -65,6 +65,7 @@
     ***********************************-->
 
     <!--**********************************
+
         Header start
     ***********************************-->
     <div class="header">
@@ -169,6 +170,7 @@
             </nav>
         </div>
     </div>
+
     <!--**********************************
         Header end ti-comment-alt
     ***********************************-->
@@ -179,27 +181,45 @@
     <div class="quixnav">
         <div class="quixnav-scroll">
             <ul class="metismenu" id="menu">
-                <li class="nav-label">Food</li>
+                <li class="nav-label">ADMIN </li>
+                @can('admin')
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-app-store"></i><span class="nav-text">Food</span></a>
+                            class="icon icon-app-store"></i><span class="nav-text">Quản Lý Người Dùng</span></a>
+
                     <ul aria-expanded="false">
-                        <li><a href="./app-profile.html">Add New Food</a></li>
-                        <li><a href="./app-calender.html">Food List</a></li>
+                        <li><a href="{{route("users.list")}}">Danh sách người dùng</a></li>
+                        <li><a href="{{route("categories.index")}}">Danh sách danh mục</a></li>
+                    </ul>
+
+                </li>
+                @endcan
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                            class="icon icon-chart-bar-33"></i><span class="nav-text">Quản Lí Danh Sách Món Ăn</span></a>
+                    <ul aria-expanded="false">
+                        @can('user')
+                        <li><a href="{{route("foods.index")}}">Danh sách món ăn </a></li>
+                        @endcan
+                            @can('user')
+                            <li><a href="{{route("categories.index")}}">Danh sách danh mục</a></li>
+                            @endcan
+                            @can('user')
+                        <li><a href="{{route("restaurants.index")}}">Danh sách nhà hàng</a></li>
+                            @endcan
+                            @can('admin')
+                                <li><a href="{{route("restaurants.list")}}">Danh sách nhà hàng</a></li>
+                            @endcan
                     </ul>
                 </li>
 
                 <li class="nav-label">User</li>
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-world-2"></i><span class="nav-text">User</span></a>
-                    <ul aria-expanded="false">
-                        <li><a href="{{route('users.create')}}">Add New User</a></li>
-                        <li><a href="{{route('users.list')}}">User List</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
 
 
+    </div>
+    <div>
+        <h2>@yield('name-list')</h2>
     </div>
     <!--**********************************
         Sidebar end
@@ -209,7 +229,6 @@
         Content body start
     ***********************************-->
     <div class="content-body">
-        <!-- row -->
       @yield('content')
     </div>
     <!--**********************************

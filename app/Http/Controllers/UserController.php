@@ -30,7 +30,7 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role_id = $request->role_id;
+        $user->role = $request->role_id;
         if ($request->hasFile('image')){
             $path = $request->file('image')->store('images', 'public');
             $user->image = $path;
@@ -74,7 +74,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = $request->password;
-        $user->role_id = $request->role_id;
+        $user->role = $request->role_id;
         $user->save();
         return redirect()->route('users.list')->with('message','Sửa user thành công');
     }

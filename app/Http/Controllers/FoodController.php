@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Food;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FoodController extends Controller
 {
@@ -21,13 +22,13 @@ class FoodController extends Controller
 
     public function getByRice()
     {
-        $foodRices = Food::where('category','LIKE','Cơm')->get();
+        $foodRices = Food::where('category_id','LIKE','1')->get();
         return response()->json(["data"=>$foodRices]);
      }
 
     public function getByNoodle()
     {
-        $foodNoodles = Food::where('category','LIKE','Phở')->get();
+        $foodNoodles = Food::where('category_id','LIKE','2')->get();
         return response()->json(["data"=>$foodNoodles]);
     }
 
@@ -39,75 +40,15 @@ class FoodController extends Controller
 
     public function getByDrink()
     {
-        $foodDrinks = Food::where('category','LIKE','Đồ uống')->get();
+        $foodDrinks = Food::where('category_id','LIKE','3')->get();
         return response()->json(["data"=>$foodDrinks]);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Food  $food
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $food = Food::findOrfail($id);
-       return view("food.detail",compact("food"));
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Food  $food
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Food $food)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Food  $food
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Food $food)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Food  $food
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Food $food)
-    {
-        //
+        $result = $food->restaurants;
+       return response()->json(["data"=>$food,"oke"=>$result]);
     }
 
     public function search(Request $request)
@@ -116,8 +57,10 @@ class FoodController extends Controller
         return response()->json(["data"=>$result]);
     }
 
+
+
     public function addToFavorite($id)
-    {
+    {   if(Auth::check()){
         $food = Food::findOrFail($id);
         $foodmark = session()->get('foodmark', []);
         if (!isset($foodmark[$id])) {
@@ -132,7 +75,10 @@ class FoodController extends Controller
             $foodmark[$id]['quantity']++;
         }
         session()->put('foodmark', $foodmark);
-        return redirect()->back();
+        return redirect()->back();}
+        else{
+            return redirect()->route("home.showFormLogin");
+        }
     }
 
 
@@ -161,5 +107,6 @@ class FoodController extends Controller
         session()->put('foodmark',$foods);
         return redirect()->back();
     }
+
 
 }

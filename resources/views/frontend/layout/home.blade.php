@@ -15,6 +15,7 @@
 
     <title> Feane </title>
 
+
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/bootstrap.css')}}" />
 
@@ -51,7 +52,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class=""> </span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  mx-auto ">
                         <li class="nav-item active">
@@ -76,7 +76,7 @@
                         <a href="" class="user_link">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
-                        <a class="cart_link" href="#">
+                        <a class="cart_link" href="{{route("foods.showFavoriteList")}}">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                       <g>
@@ -388,9 +388,9 @@
 
         <ul class="filters_menu">
             <li class="all" >All</li>
-            <li  data-filter=".noodle" class="noodle">Mỳ Phở</li>
-            <li data-filter=".rice" class="rice">Cơm</li>
-            <li  data-filter=".drink" class="drink">Đồ uống</li>
+            <li   class="noodle">Mỳ Phở</li>
+            <li  class="rice">Cơm</li>
+            <li   class="drink">Đồ uống</li>
         </ul>
 
 
@@ -410,11 +410,11 @@
                           <div class="box">
                               <div>
                                   <div class="img-box">
-                                      <img src="{{asset('frontend/images/f1.png')}}" alt="">
+                                      <img height="100%" src="{{asset('storage/'.$food->image)}}" alt="">
                                   </div>
                                   <div class="detail-box">
                                       <h5>
-                                         <a class="detail+{{$food->name}}">{{$food->name}}</a>
+                                         <a class="detail-food" data-id="{{$food->id}}">{{$food->name}}</a>
                                       </h5>
                                       <p>
                                           {{$food->note}}
@@ -423,7 +423,7 @@
                                           <h6>
                                               {{$food->price}}đ
                                           </h6>
-                                          <a href="">
+                                          <a href="{{route("foods.addToFavorite",$food->id)}}">
                                               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                         <g>
                             <g>
@@ -498,6 +498,26 @@
             </div>
 
         </div>
+{{--modal--}}
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Chi tết món ăn</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary " id="close" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
 
@@ -531,6 +551,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -699,4 +720,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('assets/food.js')}}"></script>
+<script src="{{asset('assets/detail-food.js')}}"></script>
+
 </html>

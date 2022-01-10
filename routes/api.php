@@ -28,6 +28,8 @@ Route::prefix('/home')->group(function() {
     Route::get('/noodle',[FoodController::class,"getByNoodle"])->name("home");
     Route::get('/drink',[FoodController::class,"getByDrink"])->name("home");
     Route::get('/all',[FoodController::class,"getAll"])->name("home");
+    Route::get('/detail/{id}',[FoodController::class,"show"])->name("home");
 });
 
 Route::get('/users/delete/{id}',[UserController::class,'destroy'])->name('users.destroy');
+Route::get('/category/delete/{id}',[\App\Http\Controllers\Admin\CategoryController::class,'destroy'])->name('users.destroy');

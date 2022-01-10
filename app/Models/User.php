@@ -26,7 +26,8 @@ class User extends Authenticatable
         'password',
     ];
 
-    function role() {
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
@@ -48,4 +49,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function foods()
+    {
+        return $this->hasMany(Food::class);
+    }
+
+    public function restaurants()
+    {
+        return $this->hasMany(Restaurant::class);
+    }
 }

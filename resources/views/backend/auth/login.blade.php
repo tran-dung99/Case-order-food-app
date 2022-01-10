@@ -45,7 +45,7 @@
                                     @endif
                                     <div class="form-group">
                                         <label><strong>Email</strong></label>
-                                        <input type="email" name="email" class="form-control" value="admin@gmail.com">
+                                        <input type="email" name="email" class="form-control" >
                                     </div>
                                     <div class="form-group">
                                         <label><strong>Password</strong></label>

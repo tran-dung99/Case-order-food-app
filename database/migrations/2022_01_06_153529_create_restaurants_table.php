@@ -19,6 +19,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('open_time');
             $table->string('close_time');
             $table->string('ship_time');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
