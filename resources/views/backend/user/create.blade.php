@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="card">
             <h5 class="card-header">Add new user</h5>
             <div class="card-body">

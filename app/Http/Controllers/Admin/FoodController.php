@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateFoodRequest;
+use App\Http\Requests\UpdateFoodRequest;
 use App\Models\Food;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -35,7 +37,7 @@ class FoodController extends Controller
         return view("backend.food.create",compact("restaurants"));
     }
 
-    public function store(Request $request)
+    public function store(CreateFoodRequest $request)
     {
         $food = new Food();
         $food->name = $request->name;
@@ -60,7 +62,7 @@ class FoodController extends Controller
         return view("backend.food.update",compact("food"));
     }
 
-    public function update(Request $request)
+    public function update(UpdateFoodRequest $request)
     {
         $food = Food::findOrFail($request->id);
         $food->name = $request->name;

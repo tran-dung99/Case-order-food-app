@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class UserController extends Controller
         return view('backend.user.create', compact('roles'));
     }
 
-    public function store(UserRequest $request)
+    public function store(CreateUserRequest $request)
     {
         $user = new User();
         $user->name = $request->name;
@@ -39,11 +40,9 @@ class UserController extends Controller
 
 //        $user->role()->sync($request->role);
 //        session()->flash('add_success', 'Add new user successfully!');
-        return redirect()->route('users.list');
+        return redirect()->route('users.list')->with('message','Thêm mới user thành công');
 
     }
-
-
 
     public function show($id)
     {
@@ -57,14 +56,8 @@ class UserController extends Controller
         return view('backend.user.update',compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        $request->validate([
-            "name" => "required",
-            "phone" => "required",
-            "email" => "required",
-            "password" => "required",
-        ]);
         $user = User::findOrFail($id);
         $user->name = $request->name;
         if ($request->hasFile('image')){

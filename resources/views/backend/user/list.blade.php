@@ -13,9 +13,11 @@
     </script>
 <table class="table table-bordered" style= "color: #28284e">
     <thead>
+    @can("admin")
     <tr>
         <th colspan="8"><a type="button" class="btn btn-success" href="{{route('users.create')}}">Create</a></th>
     </tr>
+    @endcan
     <tr>
         <th>ID</th>
         <th>Name</th>

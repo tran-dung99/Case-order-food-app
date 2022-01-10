@@ -9,7 +9,6 @@
         @can('update_edit_category')
         <tr>
             <th colspan="4"><a type="button" class="btn btn-success" href="{{route("categories.showFormCreate")}}">Create</a></th>
-
         </tr>
         @endcan
         <tr style="width: 50px">
@@ -22,7 +21,6 @@
         </thead>
         <tbody>
         @foreach($categories as $category)
-
             <tr class="category-{{$category->id}}" style="width: 50px">
                 <td>{{$category->id}}</td>
                 <td>{{$category->name}}</td>

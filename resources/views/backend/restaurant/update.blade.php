@@ -1,12 +1,12 @@
 @extends('backend.layout.master')
 @section('content')
     <form method="post" enctype="multipart/form-data" action="{{route('restaurants.update')}}" style="color: black">
+        <div class="container">
         <input type="hidden" name="id" value="{{$restaurant->id}}">
         <div class="col-12">
             <div class="card" style="margin-left:50px;">
                 <div class="row">
                     <div class="col-md-4">
-{{--                        <img width="60%" height="40%" class="card-img-top" src="{{asset('storage/'.$food->image)}}" alt="Card image cap">--}}
                         <br>
                         <input type="file" name="image">
                     </div>

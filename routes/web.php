@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FoodController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Trang web customer
-Route::get('/home', [FoodController::class, "index"])->name("home");
+Route::get('/Food-app', [FoodController::class, "index"])->name("home");
 
 Route::get('/', [FoodController::class, "index"])->name("home");
 Route::get('/showFormLogin', [AuthController::class, "showFormLogin"])->name("home.showFormLogin");
@@ -61,12 +62,12 @@ Route::middleware("auth")->group(function () {
             Route::post('/{id}/update', [UserController::class, "update"])->name("users.update");
         });
         Route::prefix("restaurants")->group(function () {
-            Route::get("/", [\App\Http\Controllers\Admin\RestaurantController::class, "index"])->name("restaurants.index");
-            Route::get("/showFormCreat", [\App\Http\Controllers\Admin\RestaurantController::class, "create"])->name("restaurants.showFormCreate");
-            Route::post("/create", [\App\Http\Controllers\Admin\RestaurantController::class, "store"])->name("restaurants.create");
-            Route::get("/update.form/{id}", [\App\Http\Controllers\Admin\RestaurantController::class, "edit"])->name("restaurants.showFormUpdate");
-            Route::post("/update",[\App\Http\Controllers\Admin\RestaurantController::class,"update"])->name("restaurants.update");
-            Route::get("/restaurant.list",[\App\Http\Controllers\Admin\RestaurantController::class,"listForAdmin"])->name("restaurants.list");
+            Route::get("/", [RestaurantController::class, "index"])->name("restaurants.index");
+            Route::get("/showFormCreat", [RestaurantController::class, "create"])->name("restaurants.showFormCreate");
+            Route::post("/create", [RestaurantController::class, "store"])->name("restaurants.create");
+            Route::get("/update.form/{id}", [RestaurantController::class, "edit"])->name("restaurants.showFormUpdate");
+            Route::post("/update",[RestaurantController::class,"update"])->name("restaurants.update");
+            Route::get("/restaurant.list",[RestaurantController::class,"listForAdmin"])->name("restaurants.list");
         });
         Route::prefix("/categories")->group(function () {
             Route::get("/list", [CategoryController::class, "index"])->name("categories.index");

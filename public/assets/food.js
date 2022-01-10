@@ -16,9 +16,9 @@ $(document).ready(function () {
                     str += ` <div class="col-sm-6 col-lg-4 all pizza">
                     <div class="box">
                         <div>
-                            <div class="img-box">
-                                <img src="{{asset('frontend/images/f1.png')}}" alt="">
-                            </div>
+                            <div class="img-box">`
+                               str+= ` <img src="${baseUrl}/storage/${res.data[i].image}">`
+                           str+= ` </div>
                             <div class="detail-box">
                                 <h5>
                                     ${res.data[i].name}

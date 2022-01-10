@@ -187,7 +187,9 @@
 
                     <ul aria-expanded="false">
                         <li><a href="{{route("users.list")}}">Danh sách người dùng</a></li>
-                        <li><a href="{{route("categories.index")}}">Danh sách danh mục</a></li>
+                        @can("admin")
+                        <li><a href="{{route('users.create')}}">Tạo mới người dùng</a></li>
+                        @endcan
                     </ul>
 
                 </li>
@@ -199,14 +201,21 @@
                         <li><a href="{{route("foods.index")}}">Danh sách món ăn </a></li>
                         <li><a href="{{route("foods.showFormCreate")}}">Tạo mới món ăn </a></li>
                         @endcan
+                            @can('admin')
+                        <li><a href="{{route("foods.list")}}">Danh sách món ăn </a></li>
+                            @endcan
 
+                    </ul>
+                </li>
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                            class="icon icon-chart-bar-33"></i><span class="nav-text">Quản Lý Danh Sách Danh Mục</span></a>
+                    <ul aria-expanded="false">
+
+                            <li><a href="{{route("categories.index")}}">Danh sách danh mục </a></li>
 
                     </ul>
                 </li>
 
-                    <li> <a class="has-arrow" href="{{route("categories.index")}}" aria-expanded="false"><i
-                            class="icon icon-app-store"></i><span class="nav-text">Danh sách danh mục</span></a>
-                    </li>
 
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-app-store"></i><span class="nav-text">Quản Lý Nhà Hàng</span></a>
@@ -220,12 +229,7 @@
                         <li><a href="{{route("restaurants.showFormCreate")}}">Tạo mới nhà hàng</a></li>
                             @endcan
                     </ul>
-
                 </li>
-
-
-
-
             </ul>
         </div>
 
