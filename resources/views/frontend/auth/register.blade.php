@@ -143,16 +143,28 @@
     <h3>Sing up Here</h3>
 
     <label for="name">Name</label>
-    <input type="text" name="name" placeholder="hello" id="name">
+    <input type="text" name="name" placeholder="hello" id="name" value="{{old('name')}}">
+    @error("name")
+    <p style="color: red">{{$message}}</p>
+    @enderror
 
     <label for="name">Phone</label>
-    <input type="phone" name="phone" placeholder="+84" id="phone">
+    <input type="phone" name="phone" placeholder="+84" id="phone" value="{{old('phone')}}">
+    @error("phone")
+    <p style="color: red">{{$message}}</p>
+    @enderror
 
     <label for="email">Email</label>
-    <input type="text" name="email" placeholder="hello@gmail.com" id="email">
+    <input type="text" name="email" placeholder="hello@gmail.com" id="email" value="{{old('email')}}">
+    @error("email")
+    <p style="color: red">{{$message}}</p>
+    @enderror
 
     <label for="password">Password</label>
-    <input type="password" name="password" placeholder="*******" id="password">
+    <input type="password" name="password" placeholder="*******" id="password" value="{{old('password')}}">
+    @error("password")
+    <p style="color: red">{{$message}}</p>
+    @enderror
 
     <input type="hidden" name="role_id" id="role_id" value="3">
 

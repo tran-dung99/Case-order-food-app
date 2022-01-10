@@ -17,10 +17,6 @@
         </select>
     </div>
         <div class="form-group">
-            <label for="address">Địa chỉ</label>
-            <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ">
-        </div>
-        <div class="form-group">
             <label for="category">Danh mục</label>
             <select class="form-control" id="category" name="category">
                 @foreach(\App\Models\Category::all() as $category)
@@ -29,14 +25,7 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="category">Người dùng</label>
-            <select class="form-control" id="category" name="user">
-                @foreach(\App\Models\User::all() as $user)
-                    <option value="{{$user->id}}">{{$user->name}}</option>
-                @endforeach
-            </select>
-        </div>
+        <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Ghi chú</label>
         <textarea name="note" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

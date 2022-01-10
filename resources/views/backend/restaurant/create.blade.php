@@ -20,6 +20,7 @@
                 <label for="exampleFormControlTextarea1">Thời gian giao hàng dự kiến</label>
                 <input class="form-control"  type="text" name="ship_time" placeholder="Phút">
             </div>
+            <input class="form-control"  type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="{{route("restaurants.index")}}" class="btn btn-primary">Cancle</a>
         </div>

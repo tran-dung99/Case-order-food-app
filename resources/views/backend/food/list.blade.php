@@ -3,14 +3,19 @@
 @section('title','Food Admin')
 @section('content')
 <div class="container">
-<a type="button" class="btn btn-success" href="{{route("foods.showFormCreate")}}">Create</a>
+    <br>
     <table class="table table-bordered" style="color: #28284e" >
+
         <thead>
+        <tr>
+            <th colspan="6"><a type="button" class="btn btn-success" href="{{route("foods.showFormCreate")}}">Create</a>
+            </th>
+        </tr>
         <tr>
             <th>Name</th>
             <th>Restaurant</th>
             <th>Price</th>
-            <th>Action</th>
+            <th colspan="3">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -18,7 +23,6 @@
 
             <tr class="food-{{$food->id}}">
                 <td>{{$food->name}}</td>
-                <td>{{$food->address}}</td>
                 <td>{{$food->restaurant->name}}</td>
                 <td>{{$food->price}}</td>
                 <td><a type="button" class="btn btn-warning" href="{{route("foods.detail",$food->id)}}">Detail</a></td>

@@ -76,7 +76,7 @@
                         <a href="" class="user_link">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
-                        <a class="cart_link" href="#">
+                        <a class="cart_link" href="{{route("foods.showFavoriteList")}}">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                       <g>
@@ -423,7 +423,7 @@
                                           <h6>
                                               {{$food->price}}đ
                                           </h6>
-                                          <a href="">
+                                          <a href="{{route("foods.addToFavorite",$food->id)}}">
                                               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                         <g>
                             <g>
@@ -721,10 +721,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('assets/food.js')}}"></script>
 <script src="{{asset('assets/detail-food.js')}}"></script>
-<script>
-   if() $("body").on("click",".detail-food",function (){
 
-    })
-
-</script>
 </html>

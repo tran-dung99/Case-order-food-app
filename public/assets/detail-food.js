@@ -1,16 +1,6 @@
 $(document).ready(function () {
     let baseUrl = origin;
 
-    if($(".detail-food").click()){
-        let id = $(this).attr("data-id");
-        $.ajax({
-            url: baseUrl + "/api/home/detail/"+id,
-            type: "GET",
-            success: function (res) {
-                res.data.seen_time +=1;
-            }
-        })
-    };
 
     $("body").on("click",".detail-food",function () {
         let id = $(this).attr("data-id");

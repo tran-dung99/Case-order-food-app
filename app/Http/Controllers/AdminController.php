@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,6 @@ class AdminController extends Controller
 
     public function loginAdmin(Request $request)
     {
-
         $data = $request->only('email','password');
 
         if (Auth::attempt($data)) {
@@ -28,17 +28,19 @@ class AdminController extends Controller
                 session()->flash('error-login', 'Tài khoản không phải là quản trị viên');
                 return view('backend.auth.login');
             }
-        } else {
-            session()->flash('error-login', 'Tài khoản không đúng!');
-            return view('backend.auth.login');
-        }
+
     }
+    }
+
 
     public function logoutAdmin()
     {
         Auth::logout();
         return view('backend.auth.login');
     }
+
+
+
 
     public function showFormRegisterAdmin()
     {
@@ -47,6 +49,12 @@ class AdminController extends Controller
 
     public function registerAdmin(Request $request)
     {
+        $request->validate([
+            "name" => "required",
+            "phone" => "required",
+            "email" => "required",
+            "password" => "required",
+        ]);
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -54,7 +62,7 @@ class AdminController extends Controller
         $user->role_id = $request->role_id;
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect()->route('admin.showFormLogin');
+        return redirect()->route('admin.showFormLogin')->with('message','Tạo tài khoản thành công');
 
     }
 }

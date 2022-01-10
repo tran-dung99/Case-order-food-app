@@ -12,14 +12,13 @@ class FoodController extends Controller
 {
     public function index()
     {
-        $foods = Food::all();
+        $foods = Auth::user()->foods;
         return view('backend.food.list',compact("foods"));
     }
 
     public function destroy($id)
     {
         $food = Food::findOrFail($id);
-//        $food->users()->detach();
         $food->delete();
         return response()->json(["status"=>"success"]);
     }
@@ -42,6 +41,7 @@ class FoodController extends Controller
         $food->name = $request->name;
         $food->restaurant_id = $request->restaurant;
         $food->category_id = $request->category;
+        $food->user_id = $request->user_id;
         $food->note = $request->note;
         $food->price = $request->price;
         $food->seen_time = 0;
@@ -75,7 +75,6 @@ class FoodController extends Controller
             $food->image = $path;
         }
         $food->save();
-//        $food->users()->sync($request->user);
         return redirect()->route("foods.index");
     }
 

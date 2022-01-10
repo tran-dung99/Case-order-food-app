@@ -40,4 +40,10 @@ class CategoryController extends Controller
         $category->name = $request->name;
         return redirect()->route("categories.index");
     }
+
+    public function destroy($id){
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return response()->json();
+    }
 }

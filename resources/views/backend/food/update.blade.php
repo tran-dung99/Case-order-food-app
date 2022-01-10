@@ -21,24 +21,24 @@
                             <div class="form-group">
                                 <label for="restaurant">Nhà hàng</label>
                                 <select class="form-control" id="restaurant" name="restaurant">
-                                    @foreach(\App\Models\Restaurant::all() as $restaurant)
-                                        <option value="{{$restaurant->id}}">{{$restaurant->name}}</option>
-                                    @endforeach
+                                        @foreach(\App\Models\Restaurant::all() as  $restaurant)
+                                            @if($restaurant->id == $food->restaurant_id)
+                                                <option value="{{ $restaurant->id }}" selected>{{ $restaurant->name }}</option>
+                                            @else
+                                                <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
+                                            @endif
+                                        @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="category">Danh mục</label>
                                 <select class="form-control" id="category" name="category">
                                     @foreach(\App\Models\Category::all() as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="category">Người Dùng</label>
-                                <select class="form-control" id="category" name="user">
-                                    @foreach(\App\Models\User::all() as $user)
-                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @if($category->id == $food->category_id)
+                                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                        @else
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

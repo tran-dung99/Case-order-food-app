@@ -22,6 +22,7 @@ class FoodSeeder extends Seeder
         $food->price = "30000";
         $food->seen_time = 0;
         $food->restaurant_id = 1;
+        $food->user_id = 3;
         $food->category_id = 1;
         $food->save();
 
@@ -32,6 +33,7 @@ class FoodSeeder extends Seeder
         $food->seen_time = 0;
         $food->restaurant_id = 2;
         $food->category_id = 2;
+        $food->user_id = 2;
         $food->save();
 
         $food = new Food();
@@ -41,6 +43,7 @@ class FoodSeeder extends Seeder
         $food->seen_time = 0;
         $food->restaurant_id = 3;
         $food->category_id = 2;
+        $food->user_id = 2;
         $food->save();
 
         $food = new Food();
@@ -50,6 +53,7 @@ class FoodSeeder extends Seeder
         $food->seen_time = 0;
         $food->restaurant_id = 3;
         $food->category_id = 2;
+        $food->user_id = 3;
         $food->save();
 
     }

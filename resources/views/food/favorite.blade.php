@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -181,35 +182,6 @@
     <div class="quixnav">
         <div class="quixnav-scroll">
             <ul class="metismenu" id="menu">
-                <li class="nav-label">ADMIN </li>
-                @can('admin')
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-app-store"></i><span class="nav-text">Quản Lý Người Dùng</span></a>
-
-                    <ul aria-expanded="false">
-                        <li><a href="{{route("users.list")}}">Danh sách người dùng</a></li>
-                        <li><a href="{{route("categories.index")}}">Danh sách danh mục</a></li>
-                    </ul>
-
-                </li>
-                @endcan
-                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                            class="icon icon-chart-bar-33"></i><span class="nav-text">Quản Lí Danh Sách Món Ăn</span></a>
-                    <ul aria-expanded="false">
-                        @can('user')
-                        <li><a href="{{route("foods.index")}}">Danh sách món ăn </a></li>
-                        @endcan
-                            @can('user')
-                            <li><a href="{{route("categories.index")}}">Danh sách danh mục</a></li>
-                            @endcan
-                            @can('user')
-                        <li><a href="{{route("restaurants.index")}}">Danh sách nhà hàng</a></li>
-                            @endcan
-                            @can('admin')
-                                <li><a href="{{route("restaurants.list")}}">Danh sách nhà hàng</a></li>
-                            @endcan
-                    </ul>
-                </li>
 
                 <li class="nav-label">User</li>
 
@@ -229,7 +201,69 @@
         Content body start
     ***********************************-->
     <div class="content-body">
-      @yield('content')
+        <body>
+
+        <h2 class="text-center">Danh sách món ăn đã chọn</h2>
+        <div class="container">
+            <table id="cart" class="table table-hover table-condensed" style= "color: #28284e">
+                <thead>
+                <tr>
+                    <th style="width:21%">Ảnh</th>
+                    <th style="width:40%">Tên món ăn</th>
+                    <th style="width:17%">Giá</th>
+                    <th style="width:10%">Số lượng</th>
+                    <th style="width:5%">Tổng</th>
+                    <th style="width:7%">Xóa</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <p style="display: none">{{$sum=0}}</p>
+
+                @foreach($foods as $food)
+
+
+
+                    <tr>
+                        <td><img width="50%" height="50%" src="{{asset('storage/'.$food['image'])}}"></td>
+                        <td>{{ $food['name'] }}</td>
+                        <td>{{ $food['price'] }}</td>
+                        <td>
+                            <a href="{{ route('foods.addToFavorite',$food['id'])}}"><i class="far fa-plus-square"></i></a>
+                            {{ $food['quantity'] }}  <a href="{{ route('deleteFavorite',$food['id'])}}"><i class="far fa-minus-square"></i></a>
+
+                        </td>
+                        <td>{{ $food['price']*$food['quantity']}}</td>
+                        <p style="display: none">{{$sum+=$food['price']*$food['quantity']}}</p>
+                        <td class="actions" data-th="">
+                            <label >
+                                <button class="btn btn-danger"><a href="{{ route('deleteFavorite2',$food['id'])}}"><i class="fa fa-trash-o"></i></a>
+                                </button>
+                            </label>
+                        </td>
+                    </tr>
+
+                @endforeach
+
+                </tbody><tfoot>
+
+                <tr>
+                    <td><a href="{{ route('home')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+                    </td>
+                    <td colspan="2" class="hidden-xs"> </td>
+                    <td class="hidden-xs text-center"><strong>Tổng tiền {{$sum}}</strong>
+                    </td>
+                    <td><a href="https://bill.payoo.vn/" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+                    </td>
+                </tr>
+
+
+
+                </tfoot>
+            </table>
+        </div>
+
+        </body>
     </div>
     <!--**********************************
         Content body end
@@ -293,10 +327,19 @@
 <script src="{{asset('backend/./vendor/jqvmap/js/jquery.vmap.min.js')}}"></script>
 <script src="{{asset('backend/./vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
 <script src="{{asset('backend/./vendor/jquery.counterup/jquery.counterup.min.js')}}"></script>
-
+<script src="https://kit.fontawesome.com/aba694960b.js" crossorigin="anonymous"></script>
 
 <script src="{{asset('backend/./js/dashboard/dashboard-1.js')}}"></script>
 
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+

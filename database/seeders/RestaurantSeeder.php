@@ -19,6 +19,7 @@ class RestaurantSeeder extends Seeder
         $restaurant->open_time = "8:00 AM";
         $restaurant->close_time = "18:00 PM";
         $restaurant->ship_time = "15";
+        $restaurant->user_id = 1;
         $restaurant->save();
 
         $restaurant = new Restaurant();
@@ -26,6 +27,7 @@ class RestaurantSeeder extends Seeder
         $restaurant->open_time = "8:00 AM";
         $restaurant->close_time = "18:00 PM";
         $restaurant->ship_time = "10";
+        $restaurant->user_id = 2;
         $restaurant->save();
 
         $restaurant = new Restaurant();
@@ -33,6 +35,7 @@ class RestaurantSeeder extends Seeder
         $restaurant->open_time = "8:00 AM";
         $restaurant->close_time = "18:00 PM";
         $restaurant->ship_time = "20";
+        $restaurant->user_id = 3;
         $restaurant->save();
     }
 }

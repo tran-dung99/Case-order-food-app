@@ -12,8 +12,12 @@
                 <p class="card-text">{{$user->phone}}</p>
                 Email:
                 <p class="card-text">{{$user->email}}</p>
-{{--                Role:--}}
-{{--                <p class="card-text">{{$user->role_id}}</p>--}}
+                Role:
+                <p class="card-text">@if($user->role == 1)Admin
+                    @else
+                    User
+                    @endif
+                </p>
                 <a href="{{route('users.list')}}" class="btn btn-primary">Cancel</a>
             </div>
         </div>

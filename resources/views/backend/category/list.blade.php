@@ -1,18 +1,18 @@
 @extends('backend.layout.master')
 @section('title','Food Admin')
 @section('content')
-<div class="container">
 
-    <table class="table table-bordered" style="margin-left: 100px;color: black">
+
+    <table class="table table-bordered" style="color: black; width: 50%; margin-left: 300px">
 
         <thead>
-
+        @can('update_edit_category')
         <tr>
             <th colspan="4"><a type="button" class="btn btn-success" href="{{route("categories.showFormCreate")}}">Create</a></th>
 
         </tr>
-
-        <tr>
+        @endcan
+        <tr style="width: 50px">
             <th>Id</th>
             <th>Name</th>
             @can('update_edit_category')
@@ -23,7 +23,7 @@
         <tbody>
         @foreach($categories as $category)
 
-            <tr class="category-{{$category->id}}">
+            <tr class="category-{{$category->id}}" style="width: 50px">
                 <td>{{$category->id}}</td>
                 <td>{{$category->name}}</td>
                 @can('update_edit_category')
@@ -34,7 +34,7 @@
         @endforeach
         </tbody>
     </table>
-    </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -43,7 +43,7 @@
             if(confirm("Bạn có chắc muốn xóa danh mục này không ?")) {
             let id = $(this).attr("data-id");
             $.ajax({
-                url: baseUrl + "/admin/foods/delete/"+id,
+                url: baseUrl + "/api/category/delete/"+id,
                 type: "GET",
                 success: function (res){
                     $(".category-"+id).hide()
