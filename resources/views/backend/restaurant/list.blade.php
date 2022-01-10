@@ -25,7 +25,6 @@
                     <td>{{$restaurant->open_time}}</td>
                     <td>{{$restaurant->close_time}}</td>
                     <td>{{$restaurant->ship_time}} phút</td>
-
                     <td><a type="button" class="btn btn-primary" href="{{route("restaurants.showFormUpdate",$restaurant->id)}}">Update</a></td>
                     <td><button class="btn btn-danger delete-category" data-id="{{$restaurant->id}}">Delete</button></td>
                 </tr>

@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 //Trang web customer
 Route::get('/Food-app', [FoodController::class, "index"])->name("home");
 
+
 Route::get('/', [FoodController::class, "index"])->name("home");
 Route::get('/showFormLogin', [AuthController::class, "showFormLogin"])->name("home.showFormLogin");
 Route::post('/login', [AuthController::class, "login"])->name("home.login");
