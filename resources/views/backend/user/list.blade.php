@@ -1,5 +1,6 @@
 @extends('backend.layout.master')
 @section('content')
+    <div class="container">
     <script>
         @if(Session::has('message'))
             toastr.options =

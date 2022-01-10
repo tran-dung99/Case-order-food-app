@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,6 @@ class UpdateRequest extends FormRequest
         return [
             "name" => "required",
             "phone" => "required",
-            "email" => "required",
-            "password" => "required",
         ];
     }
 
@@ -36,8 +34,6 @@ class UpdateRequest extends FormRequest
         return [
             'name.required' => 'Trường name không được để trống',
             'phone.required' => 'Trường phone không được để trống',
-            'email.required' => 'Trường email không được để trống',
-            'password.required' => 'Trường password không được để trống',
         ];
     }
 }

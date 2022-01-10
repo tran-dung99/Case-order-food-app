@@ -210,12 +210,10 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-chart-bar-33"></i><span class="nav-text">Quản Lý Danh Sách Danh Mục</span></a>
                     <ul aria-expanded="false">
-
                             <li><a href="{{route("categories.index")}}">Danh sách danh mục </a></li>
 
                     </ul>
                 </li>
-
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-app-store"></i><span class="nav-text">Quản Lý Nhà Hàng</span></a>
 
@@ -225,16 +223,10 @@
                         @endcan
                             @can('user')
                                 <li><a href="{{route("restaurants.index")}}">Danh sách nhà hàng</a></li>
-                            @endcan
                         <li><a href="{{route("restaurants.showFormCreate")}}">Tạo mới nhà hàng</a></li>
-
+                            @endcan
                     </ul>
-
                 </li>
-
-
-
-
             </ul>
         </div>
 
@@ -261,12 +253,7 @@
     <!--**********************************
         Footer start
     ***********************************-->
-    <div class="footer">
-        <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
-            <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p>
-        </div>
-    </div>
+
     <!--**********************************
         Footer end
     ***********************************-->

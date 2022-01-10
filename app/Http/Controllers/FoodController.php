@@ -77,7 +77,7 @@ class FoodController extends Controller
         session()->put('foodmark', $foodmark);
         return redirect()->back();}
         else{
-            return redirect()->route("home.showFormLogin");
+            return redirect()->route("home.showFormLogin")->with('message','Thêm món ăn thành công');
         }
     }
 

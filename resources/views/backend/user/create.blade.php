@@ -1,9 +1,6 @@
 @extends('backend.layout.master')
 @section('content')
-
-
-    <div class="container-fluid">
-
+    <div class="container">
         <div class="card">
             <h5 class="card-header">Add new user</h5>
             <div class="card-body">
@@ -12,28 +9,24 @@
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" value="{{ old('name') }}" name="name"
-                               class="form-control @error('name') is-invalid @enderror">
+                               class="form-control @error('name') is-invalid @enderror" placeholder="hello">
                         @error('name')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-
                     <div class="form-group">
                         <label>Phone</label>
                         <input type="text" name="phone"
-                               class="form-control @error('phone') is-invalid @enderror">
+                               class="form-control @error('phone') is-invalid @enderror" placeholder="+84">
                         @error('phone')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-
-
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email" value="{{ old('email') }}" name="email" class="form-control @error('email') is-invalid @enderror"
                                id="exampleInputEmail1"
-                               aria-describedby="emailHelp"
-                        >
+                               aria-describedby="emailHelp" placeholder="hello@gmail.com">
                         @error('email')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -41,11 +34,9 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <div class="input-group mb-2">
-                            <input type="password" name="password" class="form-control" id="inputPassword">
+                            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="*******">
                         </div>
                     </div>
-
-
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Role</label><br>
                         <select name="role_id" class="form-control">
@@ -57,8 +48,8 @@
                         <input type="file" name="image">
                     </div><br>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{route('users.list')}}" class="btn btn-primary">Cancel</a>
                 </form>
-
             </div>
         </div>
     </div>
@@ -70,20 +61,3 @@
 
 
 
-
-
-{{--<form method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">--}}
-{{--    @csrf--}}
-{{--    <input type="text" name="name" placeholder="Name"><br>--}}
-{{--    <input type="text" name="email" placeholder="Email"><br>--}}
-{{--    <input type="password" name="password" placeholder="Password"><br>--}}
-{{--    <input type="number" name="phone" placeholder="Phone"><br>--}}
-{{--    <input type="number" name="role_id" placeholder="Role"><br>--}}
-{{--    <input type="file" name="image"><br>--}}
-{{--    @foreach($roles as $role)--}}
-{{--        <input  name="roles[{{$role->id}}]" type="checkbox"--}}
-{{--                value="{{$role->id}}" id="roleCheck{{$role->id}}"> {{ $role->name }}--}}
-{{--    @endforeach--}}
-{{--    <br>--}}
-{{--    <button type="submit">Nhập vào</button>--}}
-{{--</form>--}}

@@ -3,9 +3,18 @@
 @section('title','Food Admin')
 @section('content')
 <div class="container">
+    <script>
+        @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+        toastr.success("{{ session('message') }}");
+        @endif
+    </script>
     <br>
     <table class="table table-bordered" style="color: #28284e" >
-
         <thead>
         <tr>
             <th colspan="6"><a type="button" class="btn btn-success" href="{{route("foods.showFormCreate")}}">Create</a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -19,9 +21,8 @@ class CategoryController extends Controller
         return view("backend.category.create");
     }
 
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-
         $category = new Category();
         $category->name = $request->name;
         $category->save();
@@ -34,10 +35,11 @@ class CategoryController extends Controller
         return view("backend.category.update",compact("category"));
     }
 
-    public function update(Request $request)
+    public function update(UpdateCategoryRequest $request)
     {
         $category = Category::findOrFail($request->id);
         $category->name = $request->name;
+        $category->save();
         return redirect()->route("categories.index");
     }
 
