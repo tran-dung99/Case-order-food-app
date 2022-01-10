@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FoodController;
@@ -67,11 +69,11 @@ Route::middleware("auth")->group(function () {
             Route::get("/restaurant.list",[\App\Http\Controllers\Admin\RestaurantController::class,"listForAdmin"])->name("restaurants.list");
         });
         Route::prefix("/categories")->group(function () {
-            Route::get("/list", [\App\Http\Controllers\admin\CategoryController::class, "index"])->name("categories.index");
-            Route::get('/showFormCreate', [\App\Http\Controllers\admin\CategoryController::class, "create"])->name("categories.showFormCreate");
-            Route::post('/create', [\App\Http\Controllers\admin\CategoryController::class, "store"])->name("categories.create");
-            Route::get("/showFormUpdate/{id}", [\App\Http\Controllers\admin\CategoryController::class, "edit"])->name("categories.showFormUpdate");
-            Route::post("/update", [\App\Http\Controllers\admin\CategoryController::class, "update"])->name("categories.update");
+            Route::get("/list", [CategoryController::class, "index"])->name("categories.index");
+            Route::get('/showFormCreate', [CategoryController::class, "create"])->name("categories.showFormCreate");
+            Route::post('/create', [CategoryController::class, "store"])->name("categories.create");
+            Route::get("/showFormUpdate/{id}", [CategoryController::class, "edit"])->name("categories.showFormUpdate");
+            Route::post("/update", [CategoryController::class, "update"])->name("categories.update");
         });
     });
 });

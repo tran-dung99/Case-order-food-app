@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" value="{{ old('name') }}" name="name"
-                               class="form-control @error('name') is-invalid @enderror">
+                               class="form-control @error('name') is-invalid @enderror" placeholder="hello">
                         @error('name')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label>Phone</label>
                         <input type="text" name="phone"
-                               class="form-control @error('phone') is-invalid @enderror">
+                               class="form-control @error('phone') is-invalid @enderror" placeholder="+84">
                         @error('phone')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -26,8 +26,7 @@
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email" value="{{ old('email') }}" name="email" class="form-control @error('email') is-invalid @enderror"
                                id="exampleInputEmail1"
-                               aria-describedby="emailHelp"
-                        >
+                               aria-describedby="emailHelp" placeholder="hello@gmail.com">
                         @error('email')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -35,7 +34,7 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <div class="input-group mb-2">
-                            <input type="password" name="password" class="form-control" id="inputPassword">
+                            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="*******">
                         </div>
                     </div>
                     <div class="form-group">

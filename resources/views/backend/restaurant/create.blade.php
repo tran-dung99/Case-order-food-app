@@ -1,9 +1,7 @@
 @extends('backend.layout.master')
-
 @section('content')
     <form method="post" action="{{route("restaurants.create")}}">
         @csrf
-        <div class="container">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Tên Nhà Hàng</label>
                 <input type="text" name="name" class="form-control" placeholder="Nhập tên Nhà Hàng" >
@@ -25,6 +23,5 @@
             <a href="{{route("restaurants.index")}}" class="btn btn-primary">Cancle</a>
         </div>
     </form>
-
 @endsection
 
